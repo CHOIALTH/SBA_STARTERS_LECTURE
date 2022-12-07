@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var clickCount = 0; // btnClick 클릭하면
+        $("#btnClick").on("click", function () {
+          clickCount++;
+          $("#clickOut").html(clickCount + "번 클릭하셨습니다!");
+        }); //on click end
+        // btnClick 클릭하면 횟수를 clickOut에 메시지로 노출.
+        $("#btnStop").on("click", function () {
+          $("#btnClick").off("click"); //on함수의 반대기능
+
+          //   $("btnClick").attr("disabled");
+        });
+        $("#btnNotice").on("click", function () {
+          $("#clickOut").html("공지사항입니다. 1번만 출력합니다");
+        });
+        $("#keyIn").on("keypress", function (e) {
+          //1. 키 입력 내용 출력
+          // $("#keyIn").on("keypress", function () {
+          //   $("#keyOut").html($("#keyIn").val());
+          // });
+          //2. 0~9 숫자 출력
+          //   if (e.keyCode >= 48 && e.keyCode <= 57) {
+          //     $("#keyOut").html(e.keyCode - 48);
+          //     // 0 : 48 , 9: 57 ... 따라서 입력한 숫자 그 자체로 보여지게됨
+          //     $("#keyOut").css("background-color", "green");
+          //   } else {
+          //     $("#keyOut").html("부적합! 0~9 숫자만 입력 가능");
+          //     $("#keyOut").css("background-color", "red");
+          //   }
+          //3.폰번호 010-국번3~4자리-전화번호4자리
+          var regex = /^010[0-9]{3,4}[0-9]{4}$/; //  = var regex = /^010[0~9]{7~8}/;//이상 정규표현식
+          //   var regex = /^[가-힣]{5,10}$/
+          // ^시작패턴 끝패턴$
+          //   var keyIn = $(this).val();
+          var keyIn = $("#keyIn").val();
+          if (keyIn.match(regex) != null) {
+            $("#keyOut").html(keyIn.match(regex));
+            $("#keyOut").css("background-color", "yellow");
+          } else {
+            $("#keyOut").css("background-color", "black");
+          }
+          //여기서 this = #keyIn 이고, var keyIn은 문자열 리턴...
+          // .match 메서드 - 매치O일 시 입력값을 리턴.. 매치X일 시 null 리턴
+        });
+      }); //ready end
+    </script>
+  </head>
+  <body>
+    <input type="button" value="클릭버튼" id="btnClick" />
+    <input type="button" value="중단버튼" id="btnStop" />
+    <input type="button" value="공지사항버튼" id="btnNotice" />
+    <div id="clickOut"></div>
+    <input type="text" id="keyIn" />
+    <div id="keyOut"></div>
+  </body>
+</html>

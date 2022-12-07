@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>primeTest</title>
+    <!-- primeNumber = 소수 -->
+    <script>
+      window.onload = () => {
+        document.getElementById("primeBtn").onclick = function () {
+          let theNum = document.getElementById("su").value;
+          console.log("su값 : ", theNum);
+          if (theNum === 2) {
+            document.getElementById("result").innerHTML = theNum + " = 소수임";
+          } else if (parseInt(theNum) === 1 || theNum > 100 || theNum < 2) {
+            alert("2~100 사이의 정수를 입력하시오");
+            theNum = "";
+          }
+          for (i = 2; i < theNum; i++) {
+            if (theNum % 2 === 0) {
+              console.log("결과1", theNum + " = 소수가 아님");
+              document.getElementById("result").innerHTML =
+                theNum + " = 소수가 아님";
+            } else if (theNum % i !== 0) {
+              console.log("결과2", theNum + " = 소수임");
+              document.getElementById("result").innerHTML =
+                theNum + " = 소수임";
+            }
+          }
+          // else if (theNum % i !== 0) {
+          //   console.log("결과2", theNum + " = 소수임");
+          //   document.getElementById("result").innerHTML =
+          //     theNum + " = 소수임";
+          // }
+
+          //     console.log("su값", document.getElementById("su").value);
+          //   console.log("theNum2값", theNum2);
+          //   const theNum = document.getElementById("su").value;
+          //   if (theNum === 2) {
+          //     document.getElementById("result").innerHTML = theNum + " = 소수임";
+          //   }
+          //   for (i = 2; i < theNum; i++) {
+          //     if (theNum % i === 0) {
+          //       document.getElementById("result").innerHTML =
+          //         theNum + " = 소수가 아님";
+          //     } else {
+          //       document.getElementById("result").innerHTML =
+          //         theNum + " = 소수임";
+          //     }
+          //   }
+
+          //   if (theNum % 1 == 0 && theNum % theNum == 0) {
+          //     document.getElementById("result").innerHTML = theNum + "는 소수임";
+          //     console.log("소수임!");
+          //   } else if (typeof theNum != Number) {
+          //     alert("숫자만 입력하세요");
+          //     theNum = null;
+          //   } else {
+          //     console.log("소수아님!");
+          //   }
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <label for="su">숫자 입력</label
+    ><input type="text" id="su" placeholder="2~100 사이의 정수" />
+    <input
+      type="button"
+      id="primeBtn"
+      value="소수판단하기"
+      onkeyup="enterkey()"
+    />
+    <div id="result">여기에 소수 판단 결과를 출력합니다.</div>
+    <script>
+      function enterKey() {
+        if (window.event.keyCode == 13) {
+        }
+      }
+    </script>
+  </body>
+</html>

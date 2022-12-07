@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>formTag3</title>
+    <script>
+      window.onload = function () {
+        alert(document.getElementById("memoId").value);
+        /* id가 memoId인 태그의 컨텐츠(내용)을 잡는 js구문  */
+        console.log("test : ", document.getElementById("memoId").value);
+      };
+    </script>
+  </head>
+  <body>
+    <form action="html/B.jsp">
+      <!--경로 :  -->
+      <h1>select태그와 textarea태그</h1>
+      <textarea
+        cols="50"
+        rows="5"
+        name="memo"
+        placeholder="여기에 메모를 입력해주세요"
+        id="memoId"
+      ></textarea>
+      <select name="ext" multiple>
+        <option value="hwp">한글</option>
+        <option value="doc">워드</option>
+        <option value="txt">메모장</option>
+        <option value="html">HTML</option>
+      </select>
+      <input type="submit" value="전송" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>attr_prop</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // $("#help").html(
+        //   $("#link1").html() + " 하면 " + $("#link1").attr("href") + "합니다."
+        // );
+        // $("#help2").html(
+        //   $("#link1").html() + " 하면 " + $("#link1").prop("href") + "합니다."
+        // );
+        // $("#help").html("--" + $("#a").attr("checked") + "--");
+        // $("#help2").html("--" + $("#b").prop("checked") + "--");
+        // setInterval(function () {
+        //   if ($("#a").attr("checked") == "checked") {
+        //     $("#a").removeAttr("checked");
+        //   } else {
+        //     $("#a").attr("checked", "checked");
+        //   }
+        // }, 1000);
+        //.attr 방식
+        //prop함수특 : prop("checked") - t/f (논리값변수를 리턴한다)
+        setInterval(function () {
+          if ($("#a").prop("checked") == true) {
+            $("#a").prop("checked", false);
+          } else {
+            $("#a").prop("checked", true);
+          }
+        }, 10);
+        //.prop 방식
+      });
+    </script>
+  </head>
+  <body>
+    <a href="selector.html" id="link1">선택자 예제파일로 이동</a><br />
+    <input type="checkbox" id="a" value="새싹" />새싹아카데미
+    <input type="checkbox" id="b" value="꽃잎" />꽃잎아카데미
+    <input type="checkbox" id="c" value="열매" />열매아카데미
+    <input type="checkbox" id="d" value="나무" />나무아카데미
+
+    <div id="help"></div>
+    <div id="help2"></div>
+  </body>
+</html>

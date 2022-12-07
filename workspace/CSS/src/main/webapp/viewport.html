@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- user-scalable =no일 경우, 사용자 개입 무시된다.. -->
+<style type="text/css">
+h1 {
+	font-size: 5vw; /* 여기서 vw : viewport width  */
+	/* font-size: 5px; 이경우, 브라우저 크기를 줄이거나 늘려도 폰트 사이즈에 변화 x*/
+	text-align: center;
+}
+
+@media screen and (min-width: 400px) and (max-width : 700px) {
+	h1 {
+		background-color: red;
+		color: yellow;
+	}
+}
+
+@media screen and (min-width: 700px) and (max-width : 1000px) {
+	h1 {
+		background-color: black;
+		color: red;
+	}
+}
+
+@media screen and (min-width: 1000px) and (max-width : 1748px) {
+	h1 {
+		background-color: lightblue;
+		color: white;
+		font-size: 40px;
+	}
+}
+</style>
+<title>viewport</title>
+</head>
+<body>
+	<h1>Hello Everyone</h1>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>표 실습</title>
+<style>
+ td{
+ padding: 5px 20px;
+ }
+</style>
+</head>
+<body>
+<!-- 2행3열의표 -->
+	<h1>상품 구성</h1>
+	<table border="1" cellspacing="0"  style="border: solid black; text-align: center; font-size: 40px;">
+		<caption>선물용과 가정용 상품 구성</caption>
+		<thead>
+		<tr>
+			<th>용도</th>
+			<th>중량</th>
+			<th>개수</th>
+			<th>가격</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td rowspan="2">선물용</td>
+			<td>3kg</td>
+			<td>11~16과</td>
+			<td>35,000원</td>
+		</tr>
+		<tr>
+			<td>5kg</td>
+			<td>18~26과</td>
+			<td>52,000원</td>
+		</tr>
+		<tr>
+			<td rowspan="2">가정용</td>
+			<td>3kg</td>
+			<td>11~16과</td>
+			<td>30,000원</td>
+		</tr>	
+		<tr>
+			<td>5kg</td>
+			<td>18~26과</td>
+			<td>47,000원</td>
+		</tr>	
+		</tbody>	
+		<tfoot>
+			<tr>
+				<td colspan="4">배송은 익일 시작됩니다.</td>
+			</tr>
+		</tfoot>					
+	</table>
+	<p><p><p><p>
+	<table border="1" cellspacing="0"  style="border: solid black; text-align: center; font-size: 40px;">
+		<caption style="text-align: left;">로그인표</caption>
+		<tr>
+			<td>아이디입력</td>
+			<td>sba123</td>
+			<td rowspan="2">
+				<button>로그인</button>
+			</td>
+		</tr>
+		<tr>
+			<td>비번입력</td>
+			<td>1234</td>
+		</tr>		
+	</table>
+	<p><p><p><p>
+	<table border="1" cellspacing="0"  style="border: solid black; text-align: center; font-size: 40px;">
+		<caption style="text-align: left;">로그인표</caption>
+		<tr>
+			<td>아이디입력</td>
+			<td>sba123</td>
+	
+		</tr>
+		<tr>
+			<td>비번입력</td>
+			<td>1234</td>
+		</tr>
+		<tfoot>
+			<tr>
+				<td colspan="2" style="float: center">
+				<button style="margin: 0px 20px;">로그인</button>
+				</td>
+			</tr>
+		</tfoot>
+				
+	</table>	
+</body>
+</html>

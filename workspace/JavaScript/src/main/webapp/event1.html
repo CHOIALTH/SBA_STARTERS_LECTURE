@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = () => {
+        document.getElementById("btn1").onmouseover = function () {
+          //onmouseover : 마우스 얹었을때
+          document.getElementById("btn1").value = "버튼1수정";
+          document.getElementById("btn1").style =
+            "background-color : red; width: 100px; height: 50px";
+        };
+        document.getElementById("btn1").onmouseout = function () {
+          //onmouseout : 마우스 다시 뺐을때
+          document.getElementById("btn1").value = "버튼1";
+          document.getElementById("btn1").style =
+            "background-color : pink; width: 100px; height: 100px";
+        };
+        document.getElementById("btn1").onclick = function () {
+          document.getElementById("btn1").value =
+            document.getElementById("btn2").value;
+        };
+        document.getElementById("btn2").onclick = () => {
+          document.getElementById("clock").innerHTML =
+            new Date().toLocaleTimeString();
+        };
+        alert(document.getElementsByTagName("h1"));
+        alert(document.getElementsByTagName("h1").length);
+
+        for (var i = 0; i < 3; i++) {
+          document.getElementsByTagName("h1")[i].onclick = () => {
+            document.getElementById("h1_value").innerHTML = this.innerHTML;
+          };
+          // document.getElementsByTagName("h1")[i].onclick = function () {
+          //   document.getElementById("h1_value").innerHTML = this.innerHTML;
+          // };
+        }
+      };
+    </script>
+    <!-- 여기까지는 body는 완성되지 않음.. script 작성 위치 주의 -->
+  </head>
+  <body>
+    <input type="button" value="버튼1" id="btn1" />
+    <input type="button" value="버튼2" id="btn2" />
+    <div><h2 id="clock"></h2></div>
+
+    <h1>제목1</h1>
+    <h1>제목2</h1>
+    <h1>제목3</h1>
+    <div id="h1_value"></div>
+
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>object_literal</title>
+  </head>
+  <body>
+    <script>
+      //객체 = 메소드(함수)+프로퍼티(변수)
+      //1.
+      var emp1 = {
+        id: 270,
+        name: "김광현",
+        salary: 58000.0, // id, name, salary는 변수
+        calcSalary: function (bonus) {
+          //salary = salary + bonus; //해석 : 이 함수 내부에 지역변수 salary가 새롭게 정의됨..
+          salary = this.salary + bonus; //해석 : emp1.salary = this.salary
+
+          return salary;
+        },
+      }; //함수. bonus는 매개변수
+      document.write("<h1>" + emp1.name + "</h1>");
+      document.write("<h1>보너스 받기 전 급여 = " + emp1.salary + "</h1>");
+      document.write(
+        "<h1>보너스 받기 후 급여 = " + emp1.calcSalary(5000) + "</h1>"
+      );
+      var emp2 = {
+        id: 123,
+        name: "오승환",
+        salary: 75000.0, // id, name, salary는 변수
+        calcSalary: function (bonus) {
+          //salary = salary + bonus; //해석 : 이 함수 내부에 지역변수 salary가 새롭게 정의됨..
+          salary = this.salary + bonus; //해석 : emp1.salary = this.salary
+
+          return salary;
+        }, //함수간 구분을 위해 쉼표사용
+        study: function () {
+          document.write("<h1>석박사 학위 과정을 공부합니다.</h1>");
+        },
+      };
+      document.write("<h1>" + emp2.name + "</h1>");
+      document.write("<h1>보너스 받기 전 급여 = " + emp2.salary + "</h1>");
+      document.write(
+        "<h1>보너스 받기 후 급여 = " + emp2.calcSalary(-5000) + "</h1>"
+      );
+      emp2.study(); //emp2만의 기능 (emp1에는 x)
+      //2.
+    </script>
+  </body>
+</html>

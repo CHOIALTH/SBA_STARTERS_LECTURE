@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼태그 연습</title>
+</head>
+<body>
+	<form action="A.jsp" method="get">
+		<fieldset style="width: 30%; box-shadow: rgba(0, 0, 0, 0.1) 10px 10px 12px; border-radius: 20px; margin-top: 100px; margin-bottom: 200px;">
+			<legend>회원가입</legend>
+<!-- 			<input type="datetime-local" style="float: right;"> -->
+			ID : <input type="text" id="idInput" maxlength="10" placeholder="ID를 입력해주세요" pattern="[0-9A-z가힣]{1,10}"><br>
+			<!-- readonly 속성 사용하면 보여지기만 하고 수정은 불가능  -->
+			<!-- A-z = A-Za-z / 힣 : 한글 마지막 글자 / 하이픈(-)으로 연결된건 범위 / 하이픈 없이 연결은 "또는"-->
+			<!-- pattern [형식]{문자 개수 : 최소,최대}  -->
+			PW : <input type="password" id="pwInput" placeholder="PW를 입력해주세요"><br>
+			이름 : <input type="text" name="name" required><br>
+			<!-- required 필수값 -->
+			성별 : <input type="radio" value="남자" name="gender">남자<input type="radio" value="여자" name="gender">여자<br>
+			취미 : <input type="checkbox" value="bowling" name="hobby">볼링<input type="checkbox" value="alcohol" name="hobby">음주
+			<input type="checkbox" value="dance" name="hobby">가무<br>
+			<input type="file" value="file">
+			<input type="reset" style="float: right" value="reset">
+			<input type="hidden" name="mode" value="admin">
+			<button type="submit" style="float: right" onclick="singUp">SignUp</button>
+		</fieldset>
+	</form>
+	
+	<label for="idInput2">ID : </label><input type="text" id="idInput2"><br>
+	<label for="pwInput2">PW : </label><input type="password" id="pwInput2"><br>
+	
+	<table border="2" cellspacing="0">
+		<caption>로그인박스</caption>
+		<tr>
+			<td><label for="idInput3">ID : </label></td>
+			<td><input type="text" id="idInput3"></td>
+		</tr>
+		<tr>
+			<td><label for="pwInput3">ID : </label></td>
+			<td><input type="text" id="pwInput3"></td>
+		</tr>	
+		<tr>
+			<td colspan="2"><input type="button" value="로그인버튼"></td>
+		</tr>	
+	</table>
+</body>
+</html>

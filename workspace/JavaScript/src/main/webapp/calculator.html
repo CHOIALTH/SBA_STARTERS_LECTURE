@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>사칙연산계산기</title>
+</head>
+<body>
+	<!-- 1. 사칙연산계산기 기능 2 .prompt1 숫자 2개(숫자가 아닌 데이터 거르도록) . prompt2 (+ ㅡ * /) 1개 ==> 연산결과 출력 // 숫자1 연산자 숫자2 = 결과 ~~  -->
+	<button onclick="plus()">합</button>
+	<button onclick="minus()">차</button>
+	<button onclick="multiply()">곱하기</button>
+	<button onclick="divide()">나누기</button>
+	<button onclick="newCal()">새로운 계산</button>
+	<br>
+	<h1 style="display: inline-block;">결과값 =</h1>
+	<div id="result"
+		style="border: 1px solid black; width: 200px; height: 40px; display: inline-block; font-size: 32px; text-align: center;"></div>
+	<script>
+		var numA = prompt("첫번째 숫자를 입력해주세요", 0)
+		var numB = prompt("두번째 숫자를 입력해주세요", 0)
+		// isNaN : Nan(Not a number)여부 확인 함수. 대소문자 구분 주의!!
+		if (isNaN(numA) != false || isNaN(numB) != false) {wi
+			alert("숫자만 입력해주세요");
+			window.location.replace("/JavaScript/calculator.html");
+		}
+		console.log(numA);
+		console.log(numB);
+		document.write("<h1> 첫번째 숫자 = " + numA + "</h1>");
+		document.write("<h1> 두번째 숫자 = " + numB + "</h1>");
+		var theResult = 0;
+		var resultDiv = document.getElementById("result");
+		function plus() {
+			theResult = window.parseInt(numA) + window.parseInt(numB);
+			resultDiv.innerHTML = theResult;
+		}
+		function minus() {
+			theResult = window.parseInt(numA) - window.parseInt(numB);
+			resultDiv.innerHTML = theResult;
+		}
+		function multiply() {
+			theResult = window.parseInt(numA) * window.parseInt(numB);
+			resultDiv.innerHTML = theResult;
+		}
+		function divide() {
+			if (numB != 0) {
+				theResult = window.parseInt(numA) / window.parseInt(numB);
+				resultDiv.innerHTML = theResult;
+			} else {
+				resultDiv.innerHTML = "0으로 나눌 순 없음"
+			}
+
+		}
+		function newCal() {
+			window.location.replace("/JavaScript/calculator.html")
+		}
+	</script>
+
+</body>
+</html>

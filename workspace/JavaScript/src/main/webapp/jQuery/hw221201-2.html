@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>allCheckEvent</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        console.log("콘솔체크");
+        // $("#all").click(function () {
+        //   if ($("#all").is(":checked")) {
+        //     $(".checkBtn").prop("checked", true);
+        //   } else $(".checkBtn").prop("checked", false);
+        $("#all").on("click", function () {
+          if ($(this).attr("checked") == undefined) {
+            //여기서 this = #all
+            $(this).attr("checked", "checked");
+          } else {
+            $(this).removeAttr("checked");
+          } //제목 내용 작성자 모두 체크
+
+          if ($(this).attr("checked") == "checked") {
+            $(".checkBtn").attr("checked", "checked");
+            $(".checkBtn").prop("checked", true);
+          } else {
+            $(".checkBtn").removeAttr("checked", "checked");
+            $(".checkBtn").prop("checked", false);
+          }
+        });
+      });
+
+      var keyword = $("#searchBox").val();
+      console.log("키워드값", keyword);
+      $("#searchForm").on("submit", function (event) {
+        // if (
+        //   $("input:checkbox[name='ck[]']").is(":checked") == false ||
+        //   keyword == ""
+        // ) {
+        //   // input태그 속성 1. value : 태그의 초기값.. 사용자가 변경 가능 2. name  : 사용자가 임의로 지정한 것으로 form submit 시 서버로 전달되는 이름(일종의 key 역할)
+        //   //서버에서 name으로 꺼낸 값에는 value에 해당하는 값이 들어있다. type="submit"일 경우 name=value의 형태로 form 전송이 이뤄짐.
+        //   alert("1개이상의 체크와 함께 검색어를 입력해주세요");
+        //   console.log("1개이상의 체크와 함께 검색어를 입력해주세요");
+        //   console.log("키값", keyword);
+        //   event.preventDefault();
+        // }
+        if ($("input:text").val() == "undefined") {
+          event.preventDefault();
+        }
+        $("input:checkbox:gt(0)").each(function () {
+          if ($(this).attr("checked") == undefined) {
+            event.preventDefault();
+          }
+        });
+
+        // if ($(".checkBtn").prop("checked", false) && keyword == "") {
+        // }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- 체크박스 '모두' 클릭시 전체 체크박스에 체크 먹도록 -->
+    <h1>검색 대상과 검색어를 입력하세요.</h1>
+    <form id="searchForm" action="search.jsp" id="searchform">
+      <input type="checkbox" id="all" value="모두" />모두
+      <input
+        class="checkBtn"
+        type="checkbox"
+        id="title"
+        name="ck[]"
+        value="제목"
+      />제목
+      <input
+        class="checkBtn"
+        type="checkbox"
+        id="content"
+        name="ck[]"
+        value="contents"
+      />내용
+      <input
+        class="checkBtn"
+        type="checkbox"
+        id="writer"
+        name="ck[]"
+        value="작성자"
+      />작성자
+      <input
+        class="checkBtn"
+        type="text"
+        value="검색어를 입력하세요"
+        id="searchBox"
+      /><input type="submit" value="검색" />
+    </form>
+    <div id="result"></div>
+  </body>
+</html>

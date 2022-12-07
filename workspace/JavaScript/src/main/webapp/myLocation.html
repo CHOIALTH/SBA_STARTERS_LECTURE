@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myLocation</title>
+    <script src="jQuery/jquery-3.6.1.min.js"></script>
+    <!-- jQuery 3.6.1 -->
+  </head>
+  <body>
+    <input type="button" value="위치추적시작" id="start" />
+    <input type="button" value="위치추적종료" id="stop" />
+    <div id="result"></div>
+    <script>
+      document.querySelector("#start").onclick = function () {
+        //위치추적시작 버튼 클릭하면 위치정보 알아오기
+        var watchId = navigator.geolocation.watchPosition(success, fail);
+        document.querySelector("#result").innerHTML =
+          "<h1>위치 추적을 시작합니다</h1>";
+      };
+      document.querySelector("#stop").onclick = function () {
+        //위치추적종료 버튼 클릭하면 위치정보 중단
+        navigator.geolocation.clearWatch(watchId);
+        //clearWatch의 경우 대상 변수명이 ()안에 들어온다
+      };
+
+      function success(me) {
+        var lat = me.coords.latitude;
+        var lon = me.coords.longitude;
+        document.querySelector("#result").innerHTML =
+          "나의 위도 = " + lat + ", 나의 경도 = " + lon;
+        window.open(
+          "http://map.google.com?q=" + lat + "," + lon,
+          "위치정보",
+          "width=800, height=600, resizalbe=yes"
+        );
+        // 기본형식 : window.open(url, name(새로열릴 창의 속성 혹은 임의의 창 이름), specs(창크기,스크롤여부,리사이즈 가능여부 등의 속성));
+        // ex) window.open("url", "위치정보", "width=, height=, resizable=yes")
+        // name - 창의 속성 : _blank(새 창) / _parent(부모프레임에 열림) / _self(현재 페이지 대체) / _top(로드된 프레임셋 대체) /
+        // 변수 q=위도,경도
+      }
+      function fail(error) {
+        document.querySelector("#result").innerHTML =
+          "오류발생 : " + error.code + " 번 : " + error.message;
+      }
+    </script>
+  </body>
+</html>

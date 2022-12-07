@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+p {
+	background-color: silver;
+}
+
+#first {
+	background-color: navy;
+}
+.pinkGroup {
+	background-color: pink;
+}
+
+h3 { 
+	background-color: orange;
+}

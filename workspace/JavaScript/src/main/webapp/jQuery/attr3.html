@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("img:first").attr(
+          "src",
+          "../../../../../HTML/src/main/webapp/images/drinks.jpg"
+        ); //setter
+        $("img:first").css("width", 200);
+        $("img:first").css("height", 200);
+        $("img:first").attr("alt", "이미지 경로 오류");
+        $("img:last").attr(
+          "src",
+          "../../../../../HTML/src/main/webapp/images/coffee.gif"
+        ); //setter
+        $("img:last").css("width", 200);
+        $("img:last").css("height", 200);
+        $("img:last").attr("alt", "커피이미지");
+
+        //getter
+      });
+      function change() {
+        $("#userInput").val("변경2");
+      }
+      function remove() {
+        $("img:first").removeAttr("src");
+      }
+    </script>
+    <script>
+      window.onload = function () {
+        document.querySelectorAll("img")[0];
+      };
+    </script>
+  </head>
+  <body>
+    <img />
+    <img />
+    <div id="addImg"></div>
+    <h1 id="theResult"></h1>
+    <script>
+      $("img").removeAttr("src"); //src 속성 삭제되면 alt가 보여짐
+      var img_array = [
+        "../../../../../HTML/src/main/webapp/images/drinks.jpg",
+        "../../../../../HTML/src/main/webapp/images/coffee.gif",
+      ];
+      setInterval(function () {
+        $("#addImg").append("<img>");
+        $("#addImg img").each(function (i) {
+          $(this).attr("src", img_array[i % img_array.length]);
+          $("#addImg img").attr("width", 200);
+          $("#addImg img").attr("height", 200);
+        }); //each
+      }, 1000); //setInterval
+
+      //   setInterval(function () {
+      //     $("img").each(function (index) {
+      //       if ($(this).attr("src") == undefined) {
+      //         //조건부분=$("img:eq("+index")").attr("src") == "undefined"
+      //         $(this).attr("src", img_array[index]);
+      //         console.log("이미지O");
+      //       } else {
+      //         $(this).removeAttr("src");
+      //         console.log("이미지X");
+      //       }
+      //     });
+      //     //반복하기 위해 .each 사용
+      //   }, 2000);
+      //인터벌 간격 1000ms(1s)마다 무명함수 실행
+    </script>
+  </body>
+</html>

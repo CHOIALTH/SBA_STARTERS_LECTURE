@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+#title {
+	display: inline-block;
+	text-shadow: 0px 5px 2px red;
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.1) 10px 10px 12px;
+	border: 1px solid red;
+	border-radius: 50px;
+	width: 35%;
+	background-color: yellow;
+	margin: 50px 0px 50px 0px;
+	font-size: 50px;
+}
+
+table {
+	width: 50%;
+}
+
+th {
+	background-color: yellow;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 30px;
+}
+
+#boardList {
+	position: relative;
+	left: 20%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: red;
+	background-color: yellow;
+}
+div > a, div > span{
+	font-size: 40px	
+}
+#search{
+	margin: 50px;
+}
+input{
+	height: 30px;
+}
