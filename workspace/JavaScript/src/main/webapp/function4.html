@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script>
+      window.onload = () => {
+        document.createElement("button");
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="divInner()">내용추가</button>
+    <div id="clock">시간이 표시될 예정입니다!</div>
+    <script>
+      function divInner() {
+        document.getElementById("clock").innerHTML = "안녕";
+      }
+      var h3 = "<h3>";
+      var h33 = "</h3>";
+      function f1() {
+        //alert(new Date().toLocaleTimeString());
+        // 			document.write(h3 + new Date().toLocaleTimeString() + h33);
+      }
+      // 		f1();
+      //window.setTimeout(f1, 5000);
+      // 		window.setTimeout(function() {
+      // 			document.write(h3 + new Date().toLocaleTimeString + h33);
+      // 		},5000);
+      // 		window.setTimeout(()=>{document.write(h3 + new Date().toLocaleTimeString + h33)},3000);
+      // var timer = window.setInterval(()=>{document.write(h3 + new Date().toLocaleTimeString() + h33)},1000);
+      // window.setTimeout(()=>{window.clearInterval(timer);},10000)//10초 지나면 중단
+      // window.clearInterval(timer);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("a").on("click", function (ev) {
+          $(this).attr("href", "b.html");
+          $(this).html("이동안합니다");
+          ev.preventDefault();
+          // 여기서 this = "a" 이고, href = a.html > b.html로 변경
+        });
+        $("#loginForm").on("submit", function (event) {
+          // form태그를 대상으로 잡는 이유 : submit 실행시 form 태그 안 전체 정보가 넘어감
+          event.preventDefault();
+          // id - 기존로그인한 사람들인 홍길동 박보검 이철수 는 아니어야한다.
+          // pw - 5자리 숫자 입력을 조건으로 함
+          var id = $("#id").val();
+          var pw = $("#pw").val();
+          var id_list = ["홍길동", "박보검", "이철수"];
+          var pw_regex = /^[0-9]{5}$/;
+          var isID;
+          //regex = Regular expression (정규 표현식)
+          //.includes 메서드(함수) - 포함 O : true 리턴, 포함 X : false 리턴
+          //.match 메서드(함수) - 매치O일 시 입력값을 리턴.. 매치X일 시 null 리턴
+          for (var i = 0; i < id_list.length; i++) {
+            if (id == id_list[i]) {
+              isID = true;
+              alert(" 중복된 ID");
+              break;
+              //일치하는 아이디 찾았으니 반복문 멈춰(break)! (대충 중복아이디가 있다는 말)
+            } else if (id == "") {
+              alert("ID를 입력하세요");
+              break;
+            }
+            if (!pw_regex.test(pw)) {
+              //대상 pw 가 형식 pw_regex 검사 통과 X
+              alert("암호 형식 부적합");
+              event.preventDefault();
+            }
+          }
+
+          //   if (id_list.includes(id) == false && pw.match(pw_regex) != null) {
+          //     //형식검사방식1 : 형식.test(검사대상)
+          //     console.log("로그인성공");
+          //   } else {
+          //     console.log("로그인실패");
+          //   }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <a href="a.html">여기로 이동</a>
+    <form id="loginForm" action="login.jsp">
+      <label for="id">아이디</label><input type="text" id="id" /><br />
+      <label for="pw">비번</label><input type="password" id="pw" /><br />
+      <input type="submit" id="login" value="로그인" /><br />
+      <input type="reset" id="cancel" value="취소" /><br />
+    </form>
+    <!-- 아래 form2 제이쿼리로 풀기 -->
+    <!-- $("#submit").on("click", function(){
+    $("#loginForm2").attr("action", "b.jsp");
+    $("#loginForm2").submit();
+}) -->
+
+    <form id="loginForm2" action="login.jsp">
+      <label for="id">아이디</label><input type="text" id="id" /><br />
+      <label for="pw">비번</label><input type="password" id="pw" /><br />
+      <input type="button" value="전송" id="submit" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>과제(221125)</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var idList = ["java", "html", "script", "jsp", "servlet"];
+        var newWindow;
+        //여기서 .ready 함수 전체로 변수의 범위가 설정됨
+        $("#checkId").on("click", function () {
+          newWindow = window.open(
+            "./idcheck.html",
+            "중복확인",
+            "_blank top=100, left =300, width = 400, height=200"
+          );
+        });
+        $("#childClose").on("click", function () {
+          $("#result").html(newWindow.$("#result").html());
+          newWindow.close();
+        });
+        $("#signinForm").on("submit", function () {
+          var id = $("#id").val();
+          var pw = $("#pw").val();
+          var name = $("#name").val();
+          var tel = $("#tel").val();
+
+          var pw_regex = /^[0-9]{8~10}$/;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>회원 가입 중입니다</h1>
+    <form id="signinForm" action="success.jsp">
+      <label for="id">아이디 입력 : </label><input type="text" id="id" />
+      <input id="checkId" type="button" value="중복확인" />
+      <input id="childClose" type="button" value="새창닫기" /><br />
+      <div id="checkResult"></div>
+      <label for="pw">암호 입력 : </label
+      ><input type="password" id="pw" /><br />
+      <label for="name">이름 입력 : </label
+      ><input type="text" id="name" /><br />
+      <label for="tel">폰번호 : </label><input type="tel" id="tel" /><br />
+      <input type="button" value="회원가입" />
+    </form>
+  </body>
+</html>

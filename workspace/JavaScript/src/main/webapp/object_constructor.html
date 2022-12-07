@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function emp(id, name, salary) {
+        //모든 사원은 공통으로 id, name, salary 가진다.
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.calcSalary = function (bonus) {
+          this.salary = this.salary + bonus;
+          return this.salary;
+        };
+        this.print = function () {
+          document.write(
+            "<h2>사원의 이름은 " +
+              this.name +
+              "이고 사번은 " +
+              this.id +
+              "이고 급여는 $" +
+              this.salary +
+              " 입니다</h2>"
+          );
+        };
+        // this.study = function () {
+        //   document.write("<h1>석박사 학위 과정을 공부합니다.</h1>");
+        // };
+      }
+      //emp(27, "CHOI", 65000.0); //함수로 호출하여 사용(객체로 사용 X)
+      var emp1 = new emp(27, "CHOI", 65000.0); //객체 생성 및 사용 = 메모리복사
+      var emp2 = new emp(36, "LEE", 240000.0); //객체 생성 및 사용 = 메모리복사
+      emp1.calcSalary(5000);
+      emp1.print();
+      emp2.calcSalary(-5000);
+      emp2.print();
+      emp2.study = function (name) {
+        //emp2만 study라는 함수를 추가한다.
+        document.write(
+          "<h1>" + this.name + "는 석박사 학위 과정을 공부합니다.</h1>"
+        );
+      };
+      emp2.study();
+    </script>
+  </body>
+</html>

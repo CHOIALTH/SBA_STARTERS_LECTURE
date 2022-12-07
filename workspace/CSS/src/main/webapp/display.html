@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>display 연습</title>
+<style>
+
+/* 	#mainMenu ol{text-align: center;} */
+/* #mainMenu li { */
+/* 	background-color: lightblue; */
+/* 	display: inline-block; */
+/* } */
+/*이상 리스트 inline 중앙정렬1*/
+#mainMenu li {
+	background-color: lightblue;
+	display: inline-block;
+}
+
+#mainMenu {
+	display: flex;/* id=mainMenu인 div에 felx를 줌 */
+	flex-direction: row;
+	justify-content: center;/* 방향! 위의 경우는 1개의 row로 나타내라*/
+	/* 위3개의 속성은 세트다!  */
+}
+/*이상 리스트 inline 중앙정렬2*/
+a {
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+	<div id="mainMenu">
+		<ol>
+			<li><a>뉴스</a></li>
+			<li><a>스포츠뉴스</a></li>
+			<li><a>날씨</a></li>
+			<li><a>코로나현황</a></li>
+		</ol>
+	</div>
+	<div>제목1</div>
+	<div>제목2</div>
+	<div>제목3</div>
+	<span>1제목</span>
+	<span>2제목</span>
+	<span>3제목</span>
+</body>
+</html>

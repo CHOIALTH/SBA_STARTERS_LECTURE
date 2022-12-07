@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="jquery-3.6.1.min.js"></script>
+
+    <script>
+      //   function Board(seq, title, contents) {
+      //     //객체생성을 위한 함수. 변수로 저장
+      //     this.seq = seq;
+      //     this.title = title;
+      //     this.contents = contents;
+      //     this.time = new Date().toLocaleString();
+      //     //함수 선택적(일단 필요없다!)
+      //   } //방법1 객체 정의 생성
+
+      var boardlist = [];
+      //   var boardlist = new Array(5); //배열에 들어갈 개수 체크
+      window.onload = function () {
+        var save = document.querySelector("#save"); //id="save"인 버튼태그 읽어옴. 여기서 save 변수는 js DOM객체
+        var output = document.querySelector("#output"); //id="output"인 버튼태그읽어옴. 여기서 output 변수는 js DOM객체
+        var saveresult = document.querySelector("#saveresult"); //id="saveresult"인 div태그 읽어옴. 여기서 saveresult 변수는 js DOM객체
+        var list = document.querySelector("#list"); //id="list"인 div태그 읽어옴. 여기서 list 변수는 js DOM객체
+        var seq = document.querySelector("#seq"); //id="seq"인 input태그 읽어옴. 여기서 seq 변수는 js DOM객체
+        var title = document.querySelector("#title"); //id="title"인 input태그 읽어옴. 여기서 title 변수는 js DOM객체
+        var contents = document.querySelector("#contents"); //id="contents"인 input태그 읽어옴. 여기서 contents 변수는 js DOM객체
+        var clickCount = 0;
+
+        save.onclick = function () {
+          //var board1 = new Board(seq.value, title.value, contents.value);
+          //방법1 관련 코드
+          var board1 = {
+            seq: seq.value,
+            title: title.value,
+            contents: contents.value,
+            time: new Date().toLocaleString(),
+          };
+          if (clickCount == 5) {
+            saveresult.innerHTML =
+              "<h2>게시물 추가 저장이 불가능합니다. 리스트를 출력하세요</h2>";
+            return false;
+          } else if (
+            seq.value != "" &&
+            title.value != "" &&
+            contents.value != "" &&
+            clickCount < 5
+          ) {
+            boardlist.push(board1);
+            //board1 이 push 해야할 것..
+            clickCount++;
+            console.log("seq", seq.value);
+            console.log(clickCount);
+            saveresult.innerHTML =
+              "<h2>게시물 " + clickCount + "개가 저장되었습니다.</h2>";
+          } //if end
+        }; //save.onclick
+
+        // 1. 게시물저장 버튼 클릭시
+        // 1-1 save 버튼 클릭하면 seq, title, contents 입력값 가져온다
+        // 예) 1 제목1 내용1 게시물저장 버튼 클릭하면
+        // 1-2. Board 생성자 함수 정의해서
+        // 1-3. 1-1 입력값 Board 객체 생성
+        // 1-4. boardlist 배열에 저장하고
+        // 1-5. saveresult 태그에 게시물 1개 저장되었습니다 출력
+        // 1-6. 단, 6번째부터는 saveresult 태그에 게시물 추가 저장 불가능합니다. 리스트를 출력하세요 출력
+        output.onclick = function () {
+          list.innerHTML = "";
+          for (var i = 0; i < boardlist.length; i++) {
+            list.innerHTML +=
+              boardlist[i].seq +
+              ":" +
+              boardlist[i].title +
+              ":" +
+              boardlist[i].contents +
+              ":" +
+              boardlist[i].time +
+              "<br>";
+          } //for end
+          // 2.게시물조회 버튼 클릭시
+          // list 태그에 5개 게시물 리스트 출력
+          // 예)
+          // 1:제목1:내용1:2022. 11. 30. 오후 5:21:15
+          // 2:제목2:내용2:2022. 11. 30. 오후 5:21:35
+          // 2:제목2:내용2:2022. 11. 30. 오후 5:21:40
+          // 2:제목2:내용2:2022. 11. 30. 오후 5:21:42
+          // 2:제목2:내용2:2022. 11. 30. 오후 5:21:43
+        };
+        // if (seq != "" && title != "" && contents != "") {
+        //   var newList = boardlist.push(seq, title, contents, time);
+        //   console.log("seq값", seq);
+        //   console.log("title값", title);
+        //   console.log("contents값", contents);
+        //   console.log("리스트", boardlist);
+        //   console.log("시간", time);
+        //   console.log("뉴리스트", newList);
+        //   $("#saveresult").html("게시물 1개 저장되었습니다");
+        // }
+
+        // 변수.innerHTML;
+        // <태그>~~~</태그> ~~~ : <태그>의 body부분 ...> 그 내용이 innerHTML
+      };
+    </script>
+    <script></script>
+  </head>
+  <body>
+    번호:<input type="text" id="seq" /> 제목:<input type="text" id="title" />
+    내용:<input type="text" id="contents" />
+    <input type="button" id="save" value="게시물저장" />
+    <div id="saveresult"></div>
+
+    <input type="button" id="output" value="게시물조회" />
+    <div id="list">5개 게시물 입력 결과 출력</div>
+  </body>
+</html>

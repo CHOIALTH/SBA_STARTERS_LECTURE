@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <!-- jQuery 3.6.1 -->
+    <script>
+      $(document).ready(function () {
+        //$("h1:first").css("color", "red");
+        //$("h1:last").css("color", "blue");
+        //$("h1:eq(2)").css("color", "green"); //이상 setter 용도
+        //alert($("h1").css("color")); //getter 용도 / 이 경우 alert는 h1:first의 색 정보만 띄운다.
+        //$("h1").each(function () {
+        //  alert($(this).css("color"));
+        //});
+        //$().each(function(){})-(jQuery함수)반복문을 통해 모든 h1의 색상정보를 띄울 수 있다
+        //그냥 this 쓰면 출력 실패.. why?
+        var cols = [
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "blue",
+          "navy",
+          "purple",
+        ];
+        $("h1").css("color", function (i) {
+          //7개 반복시마다 색상값 return(배열 활용)
+          return cols[i];
+        });
+        //color 속성을 함수의 결과로 변경한다
+        // $("h1").each(function () {
+        //   alert($(this).css("color"));
+        // });
+        $("h1").each(function () {
+          $("#result").html($("#result").html() + this.style.color + "<br>");
+          //기존의 innerHTML 내용 버리지말고 그 뒤에 이어서 연결지어라는 명령어
+          // =  $("#result").append(this.style.color + "<br>");
+          // =  document.getElementById("result").innerHTML +=
+          //     this.style.color + "<br";
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>제목1</h1>
+    <h1>제목2</h1>
+    <h1>제목3</h1>
+    <h1>제목4</h1>
+    <h1>제목5</h1>
+    <h1>제목6</h1>
+    <h1>제목7</h1>
+    <div id="result"></div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>미디어쿼리_사이즈</title>
+<style>
+body {
+	background-size: 400px;
+	background-image:
+		url("https://d2iwdqgro8i2ew.cloudfront.net/codingon/pr/codingon-logo-wide.png");
+	background-repeat: no-repeat;
+	background-position: top center;
+	/* 이미지를 상단-중앙에 놓겠다  */
+	background-attachment: fixed;
+	background-position: top center;
+} /* 이상 기본 */
+@media screen and (max-width:1300px) {
+	body {
+		background-size: 400px;
+		background-image:
+			url("https://d2iwdqgro8i2ew.cloudfront.net/codingon/pr/codingon-logo-wide.png");
+		background-repeat: no-repeat;
+		background-position: left center;
+		background-attachment: fixed;
+	}
+}
+
+@media screen and(max-width:700px)and (orientation:landscape) {
+	body {
+		background-size: 400px;
+		background-image:
+			url("https://d2iwdqgro8i2ew.cloudfront.net/codingon/pr/intro/logo-seoul.png");
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-attachment: fixed;
+	}
+} /*이상 큰크기부터*/
+</style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <!-- jQuery 3.6.1 -->
+    <script>
+      $(document).ready(function () {
+        //$("input:checkbox").css("color", "red"); //이런식이면 못잡는다..
+        $("input:checked").parent().css("color", "red"); //checked속성이 있는 input태그의 부모태그 글씨를 바꾼다.
+        $("th").css("color", "red");
+        //$("th:first").css("color", "yellow");
+        //$("th:last").css("color", "yellow"); //table이 여러개면 가장 마지막 태그가 잡힌다
+        $("th:first-child").css("color", "green");
+        $("th:last-child").css("color", "green");
+        $("tr:eq(3) td").css("background-color", "lightblue"); //eq=equal(일치) 배열4번째([3]) 행만 적용(여러 테이블이 존재할 경우 전체 테이블을 하나로 두고 그 중 3번째)
+        $("tr:gt(3) td").css("background-color", "navy").css("color", "white"); //gt=greater(더큰).. 따라서 배열4번째([3])행보다 큰 배열5번째([4])행~부터 적용
+        $("tr:nth-child(3n) td").css("border", "3px double yellow"); //3의 배수에 해당하는 곳에 적용
+        $("table td").css("font-size", "40px");
+        $("table > td").css("font-size", "20px");
+
+        // $("option:selected").css("color", "red");
+        // = $("select option[selected]").css("color", "red");
+
+        // id second인 태그 선택하여 글씨색 빨강
+        // $("#second").css("color", "red");
+        // $(".red").css("background-color", "red");
+        // $("h1").css("color", "yellow");
+        // $("h1 a").css("background-color", "green"); //h1 포함 자식, 자식의 자식 ...
+        // $("h1 > a").css("background-color", "yellow"); //h1 포함 자식만.. 손주부턴 절대 X
+        // $("h1, td").css("background-color", "orange");
+        // $("h1#second").css("color", "blue");
+        // $("h1.red").css("color", "orange");
+        // $("input:text").css("border", "3px solid black");
+        // =  $("input[type=text]").css("border", "3px solid black");
+        // $("input:button, button").css("color", "red");
+        // $("button").css("color", "blue");
+        // $("input[type*=e]").css("border", "3px dashed red"); // *= 포함하는 걸 찾는다
+        // $("input[type^=e]").css("border", "3px dashed red"); // ^= 시작하는 걸 찾는다
+        // $("input[type$=e]").css("border", "3px dashed red"); // $= 종료하는 걸 찾는다
+      });
+    </script>
+  </head>
+  <body>
+    <h1 class="red">제목1</h1>
+    <h1 id="second">제목2</h1>
+    <h1><a href="a.html">링크1</a></h1>
+    <a href="b.html" class="red">링크2</a>
+    <input type="text" value="기본 문자열" /><br />
+    <input type="password" value="기본 암호" /><br />
+    <input type="tel" value="기본 연락처" /><br />
+    <input type="url" value="http://" /><br />
+    <input type="email" value="a@b.com" /><br />
+    <input type="button" value="버튼1" /><br />
+    <button>버튼2</button>
+    <label for="레이블연결인풋태그id">
+      <input type="checkbox" value="sql" id="theSql" checked />sql
+    </label>
+    <input type="checkbox" value="java" />자바
+    <input type="checkbox" value="javascript" />자바스크립트
+    <input type="checkbox" value="spring" />스프링
+    <input type="checkbox" value="maria" />DB
+    <select>
+      <option>1</option>
+      <option selected>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+    <table>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>작성자</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>첫 글</td>
+        <td>튀르키에튀르키에</td>
+        <td>웅진</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>뻘 글</td>
+        <td>튀르키에튀르키에</td>
+        <td>웅진</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>세번째 글</td>
+        <td>이버이버~</td>
+        <td>네이버</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>첫 글22</td>
+        <td>튀르키에튀르키에22</td>
+        <td>웅진</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>첫 글</td>
+        <td>제철제철~</td>
+        <td>포스코</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>첫 글</td>
+        <td>튀르키에튀르키에</td>
+        <td>웅진</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>막 글</td>
+        <td>튀르키에튀르키에</td>
+        <td>웅진</td>
+      </tr>
+    </table>
+  </body>
+</html>

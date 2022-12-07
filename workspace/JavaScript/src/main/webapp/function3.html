@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var h3 = "<h3>"
+		var h33 = "</h3>"
+		name = "전역변수";
+		function f1() {
+			var name = "지역변수";
+			name2 = "전역변수"; //var 키워드 생략시 전역변수로 쓰인 것
+			document.write(h3 + name + h33);
+			document.write(h3 + name + ":" + name2 + h33);
+			document.write(h3 + this.name + h33); //this 사용시 전역 vs 지역 중 전역 우선?
+		}; // 
+		
+		function f1 (){
+			let f2 = function (){};
+			
+		}
+		f1();
+	</script>
+
+</body>
+</html>

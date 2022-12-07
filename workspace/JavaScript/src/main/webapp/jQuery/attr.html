@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("img:first").attr(
+          "src",
+          "../../../../../HTML/src/main/webapp/images/drinks.jpg"
+        ); //setter
+        $("img:first").css("width", 200);
+        $("img:first").css("height", 200);
+        $("img:first").attr("alt", "이미지 경로 오류");
+        $("img:last").attr(
+          "src",
+          "../../../../../HTML/src/main/webapp/images/coffee.gif"
+        ); //setter
+        $("img:last").css("width", 400);
+        $("img:last").css("height", 300);
+        $("img:last").attr("alt", "커피이미지");
+        $("img").each(function (index) {
+          $("#result").append(
+            index + "번째 이미지의 경로 = " + $(this).attr("src") + "<br>"
+          );
+        });
+        $("#userInput").attr("value", "입력").css("text-align", "center"); //value 저장 속성명
+        setTimeout(
+          change,
+          3000 //
+        );
+        setInterval(check, 1000);
+        console.log($("img:first"));
+        // $("#result").text($("img").attr("src"));
+        //getter
+      });
+      function change() {
+        $("#userInput").val("변경2");
+      }
+      function remove() {
+        $("img:first").removeAttr("src");
+      }
+      function check() {
+        if ($("img:first").filter("[display='none']")) {
+          $("img:first").css("display") == "block";
+          $("img:first").attr("display", "inline");
+        } else {
+          $("img:fist").attr("display", "none");
+        }
+      }
+    </script>
+    <script>
+      window.onload = function () {
+        document.querySelectorAll("img")[0];
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="remove()">속성삭제</button>
+    <img />
+    <img alt="경로미정" />
+    <img />
+    <div id="result"></div>
+    <h1 id="theResult"></h1>
+    <input id="userInput" type="text" value="내용을 입력하세요" />
+  </body>
+</html>

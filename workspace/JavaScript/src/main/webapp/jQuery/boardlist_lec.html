@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="jquery-3.6.1.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        var boardlist = [];
+      });
+    </script>
+    <script>
+      function Board(seq, title, contents) {
+        //객체생성을 위한 함수
+        if (boardlist.length <= 20) {
+          $(this).seq = seq;
+          $(this).title = title;
+          $(this).contents = contents;
+          $(this).time = new Date().toLocaleString();
+          var newlist = boardlist.push(seq, time, contents, time);
+          // var time = Date().toLocaleString();
+          //객체생성시 변수로 저장
+          //this.seq = seq;
+          //....
+        }
+        //함수 선택적
+      }
+      // var boardlist = [];
+      var boardlist = new Array(5); //배열에 들어갈 개수 체크
+
+      // $("#save").click(function () {
+      //   var seq = $("#seq").val();
+      //   var title = $("#title").val();
+      //   var contents = $("#contents").val();
+      //   if (seq !== "" && title !== "" && contents !== "") {
+      //     console.log("공백x");
+      //     $("#saveresult").html("게시물 1개 저장되었습니다");
+      //   }
+      // });
+    </script>
+  </head>
+  <body>
+    번호:<input type="text" id="seq" /> 제목:<input type="text" id="title" />
+    내용:<input type="text" id="contents" />
+    <input type="button" id="save" value="게시물저장" />
+    <div id="saveresult"></div>
+
+    <input type="button" id="output" value="게시물조회" />
+    <div id="list">5개 게시물 입력 결과 출력</div>
+  </body>
+</html>

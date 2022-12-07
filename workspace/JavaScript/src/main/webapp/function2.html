@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//변수종류 - 숫자 / 문자 / 논리값(boolean)/ undefined
+		//함수도 변수처럼 취급 문법
+		//익명함수 정의 - 즉각 실행
+		(function() {
+			document.write("<h1>무명함수 실행중</h1>")
+		})(); //매개변수를 안준 익명함수도 매개변수 입력해봐도 실행은 된다.
+		let f2 = function() {
+			document.write("<h1>무명함수 실행중2</h1>")
+			return 0;
+		};
+		f2();
+		alert(f2);   // f2 함수 내용 출력
+		alert(f2()); // f2 실행 결과 출력 , 위 코드에서 return 값 지울 시 undefined 출력
+		let f3 = f2; //함수명을 f2 -> f3 으로 변경
+		f3();
+		alert(f3);
+		
+	</script>
+
+</body>
+</html>

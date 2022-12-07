@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+	<script>
+		var a = 270;
+		/* 변수선언키워드 변수이름 = 값 : 변수선언문  */
+		alert(a);
+		console.log("변수 a값 : ", a)
+		var b = 3.141592;
+		console.log(a + b);
+		var c = 100;
+		document.write("a/c = ", a / c);
+		document.write("b의 값 = ", b + "<div>와우</div>")
+
+		var f = true;
+		document.write("<h3>" + f + "</h3>");
+		f = false;
+		document.write("<h3>" + f + "</h3>");
+
+		var arr = new Array(5);/* 5개의 내용물 담은 배열 생성 코드 */
+
+		console.log("배열2 예시1 : ", Array(5)[1]);
+		var title = prompt('과정명을 입력하세요');
+		document.write("<h1>" + title + "</h1>");
+		console.log("과정명 : ", title);
+		var delete_Result = confirm("삭제하시겠습니까?");
+		document.write("<h1>" + delete_Result + "</h1>");
+		document.write("<h1>" + typeof (delete_Result) + "</h1>");
+		document.write("<h1>" + typeof (title) + "</h1>");
+		document.write("<h1>" + typeof (a) + "</h1>");
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>중복확인</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var id_list = ["java", "html", "script", "jsp", "servlet"];
+        var id = opener.$("#id").val();
+        console.log("넘어온id값:",id)
+        $("#result").html(id).val();
+        var isCheck;
+        for(var i = 0; i < id_list.length; 1++){
+          if( id == id_list[i]){
+            isCheck = " 는 이미 사용 중인 ID 입니다"
+            break
+          }else{
+            isCheck = " 는 사용가능합니디.."
+          }
+        }
+        $("result").append(isCheck);
+        $("#myClose").on("click", function () {
+          console.log("theId");
+          opener.$("#result").html($("#result").html())
+          window.close()
+        });
+      }); //ready end
+    </script>
+  </head>
+  <body>
+    <h1>ID중복확인결과</h1>
+    <div id="result">중복검사여부</div>
+    <input type="button" id="myClose" value="창닫기" />
+  </body>
+</html>

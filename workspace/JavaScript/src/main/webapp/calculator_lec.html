@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>성희쌤 답안계산기</title>
+</head>
+<body>
+	<script>
+		let num1 = prompt("연산할 숫자 1 입력 : ");
+		let numA = window.parseInt(num1);
+		let num2 = prompt("연산할 숫자 2 입력 : ");
+		let numB = window.parseInt(num2);
+		let cal = prompt("연산자 입력(+ - * / 만 입력 가능)");
+		let result;
+		if (window.isNaN(numA) || window.isNaN(numB)) {
+			alert("숫자만 입력해주세요");
+			window.location.replace("/JavaScript/calculator.html");
+		}
+		if (cal == "+") {
+			result = numA + numB;
+		} else if (cal == "-") {
+			result = numA - numB;
+		} else if (cal == "*") {
+			result = numA * numB;
+		} else if (cal == "/") {
+			if (numB != 0) {
+				result = numA / numB;
+			} else {
+				result = "0으로 나눌 수 없습니다"
+			}
+		}
+		/* 		else if (isNaN(num1) != false || isNaN(num2) != false) {
+		 alert("올바른 숫자 형식을 입력하세요");
+		 } else if (cal != "+" || cal != "-" || cal != "*" || cal != "/") {
+		 alert("올바른 사칙연산자를 입력하세요");
+		 } */
+		document.write("<h3>" + numA + cal + numB + "=" + result + "</h3>");
+	</script>
+</body>
+</html>
