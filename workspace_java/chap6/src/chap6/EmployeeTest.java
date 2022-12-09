@@ -3,11 +3,19 @@ package chap6;
 //여러개의 클래스가 하나의 파일에 있을 경우, public 키워드 1개 클레스에만 선언해야한다.
 //따라서 이 경우 public 클래스 명 = 파일명 이어야 함.
 //회사원 변수 + 메소드
-
+//회사원 5개 객체변수 (지역변수X, 클래스변수x, 매개변수x) "클래스" 정의
 
 public class EmployeeTest {
 //변수들
 //메소드
+	int id;
+	String name;
+	String title;
+	String dept;
+	double salary;
+	void printInform(){
+		System.out.printf("%s %s(사번 : %d)은(는) %s 소속으로 급여는 %.0f원입니다. \\n", this.name, this.title, this.id,this.dept, this.salary);
+	}
 
 //자바 어플리케이션 클래스(특정기능부여) - "대장" -main
 	public static void main(String[] args) {
