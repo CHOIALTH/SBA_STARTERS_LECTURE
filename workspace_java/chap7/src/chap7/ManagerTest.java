@@ -1,4 +1,6 @@
 package chap7;
+
+
 //java 자동 포함 - 생성자, 상속
 //java.lang.Object 클래스 라이브러리 있다
 //java.lang.Object 클래스 변수나 메서드 java 모든 클래스 자동포함 사용가능
