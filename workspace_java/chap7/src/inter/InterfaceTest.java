@@ -13,7 +13,7 @@ class StudentWorker implements Student,Worker{
 	}
 	@Override
 	public void lunch() {
-		System.out.println("학생식당이나 교직원식당에서 점심먹ㄷ");
+		System.out.println("학생식당이나 교직원식당에서 점심먹다");
 	}
 	//생성자 변수 메서드 추라 가능
 }
@@ -21,6 +21,8 @@ class StudentWorker implements Student,Worker{
 public class InterfaceTest {
 
 	public static void main(String[] args) {
+		StudentWorker sw = new StudentWorker();
+		0.
 
 	}
 
