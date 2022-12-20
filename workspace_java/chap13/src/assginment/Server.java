@@ -2,6 +2,7 @@ package assginment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.function.Function;
 
 //1개 서버 - 다수개 클라이언트 요청 - 처리
 public class Server {
@@ -17,6 +18,14 @@ public static void main(String[] args) {
 	  c3.start(); 
 	  c4.start();
 	 
+	  // 이하 리턴타입, 매개변수 없는 람다식 활용
+	  Thread c5 = new Thread(()->{System.out.println("람다스레드");});
+	  c5.start();
+	  
+	  // 이하 리턴타입, 매개변수 있는 람다식 활용. 날짜포맷 매개변수 전달하면 날짜완성 형태
+	  Function<String, String> mydate = str -> new SimpleDateFormat(str).format(new Date());
+	  
+	  
 }
 }
 //1.멀티스레드클래스 정의
@@ -35,7 +44,7 @@ class LoginClient extends Thread{
 		this.id = id;
 		this.pw = pw;
 	}
-	public void run(String id, String pw) {
+	public void run() {
 		// run 메서드 오버라이딩
 		System.out.printf("로그인아이디%s를 입력받습니다\n로그인압호를 확인합니다\n",id);
 		if(pw.equals("java")) {
@@ -68,10 +77,15 @@ class BoardClient extends Thread{
 	// Thread 클래스 상속받음
 	/*5번 반복 : 0.5초마다 게시물 x번작성합니다 */
 	@Override // modifier 같거나 더 넓고 리턴타입 이름 매개변수 일치해야함.
-	public void run() throws InterruptedException {
+	// 부모클래스 throws 예외보다 더 많은 다른 종류 예외 throws 불가함.
+	public void run() {
 		for(int i = 1; i <= 5; i++) {
 			System.out.printf("게시물 %d번 작성합니다\n",i);
-			Thread.sleep(500);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		} // for end
 	}
 }
