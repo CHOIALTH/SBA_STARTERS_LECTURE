@@ -6,4 +6,5 @@
  *
  */
 module chap13 {
+	requires java.desktop;
 }
