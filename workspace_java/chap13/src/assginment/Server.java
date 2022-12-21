@@ -24,7 +24,8 @@ public static void main(String[] args) {
 	  
 	  // 이하 리턴타입, 매개변수 있는 람다식 활용. 날짜포맷 매개변수 전달하면 날짜완성 형태
 	  Function<String, String> mydate = str -> new SimpleDateFormat(str).format(new Date());
-	  
+	  mydate.apply("yyyy년도 MM월 dd일")
+	  // apply : Function의 메서드 일종
 	  
 }
 }

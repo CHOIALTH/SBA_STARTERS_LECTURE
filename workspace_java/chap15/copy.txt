@@ -1,0 +1,25 @@
+package chap15;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileCopy {
+
+	// 1. (입력파일 없는 오류) a.txt b.txt --> a.txt 파일 없다
+	// 2. src/chap15/FileCopy.java copy.txt
+	
+	public static void main(String[] args)throws IOException {
+		FileInputStream fis = new FileInputStream(args[0]);
+		FileOutputStream fos = new FileOutputStream(args[1]);
+		
+		while (true) {
+			int data = fis.read(); // 1byte만 활용
+			if(data == -1) break;
+			fos.write(data);
+		}
+		fis.close();
+		fos.close();
+	}
+
+}
