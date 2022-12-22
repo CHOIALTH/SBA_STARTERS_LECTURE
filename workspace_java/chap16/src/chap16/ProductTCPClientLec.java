@@ -23,9 +23,7 @@ public class ProductTCPClientLec {
 		System.out.println("==클라이언트가 서버("+ serverIP + ")로 접속했습니다.==");
 		
 		OutputStream os = s.getOutputStream(); 
-		//String request = name + '-' + price + '-' + inven;
-		//byte by[] =request.getBytes(); 
-		//os.write(by);
+
 		name = name + " "; // 정보별 구분 목적으로 공백을 붙임. ex ) name price inven 형태로 담긴다
 		price = price + " ";
 		inven = inven + " ";
@@ -41,7 +39,9 @@ public class ProductTCPClientLec {
 		System.out.println("[==서버는 클라이언트로부터" + response +  " 요청을 전달 받았습니다.==]");
 		
 		// 이상 서버로부터 응답("추가완료~") -> 입력스트림 
+		sc.close();
 		s.close();
+		key.close();
 		System.out.println("==클라이언트가 서버의 접속을 해제했습니다.==");
 		
 	}
