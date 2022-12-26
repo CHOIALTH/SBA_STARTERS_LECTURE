@@ -85,7 +85,7 @@ GROUP BY DEPARTMENT_ID, JOB_ID;
 -- 각 부서별 부서 사원 급여총합 조회
 -- 단, 부서코드 없는 사원 제외하고, 급여총합 10만 이상인 부서만 조회
 SELECT DEPARTMENT_ID, SUM(SALARY)
-FROM employees
+FROM employeesempdb
 WHERE DEPARTMENT_ID IS NOT NULL 
 GROUP BY DEPARTMENT_ID
 HAVING SUM(SALARY) >= 100000
