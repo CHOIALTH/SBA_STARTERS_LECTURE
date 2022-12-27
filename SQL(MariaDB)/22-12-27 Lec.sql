@@ -159,6 +159,192 @@ ORDER BY 1;
 -- 50부서이면서 MANAGER직종인 것을 중복으로 받아오게 됨.
 -- 중복제거나 정렬을 하지 X
 
+-- 대상은 50부서인데, 이 중 manager 직종은 제외하고 조회해본다!
+
+
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID, JOB_ID
+FROM emp_dept_50
+except
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID, JOB_ID
+FROM emp_job_man;
+
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID, JOB_ID
+FROM emp_job_man
+except
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID, JOB_ID
+FROM emp_dept_50;
+
+-- 집합연산자 : 2개 테이블의 행 개수 합병 - 행 개수 변화
+-- JOIN : 2개 테이블 컬럼 개수 합병 - 1개 레코드 열 개수 변화
+-- SUBQUERY, JOIN QUERY
+
+
+-- 사원명 부서명 조회
+SELECT FIRST_NAME, DEPARTMENT_ID FROM employees;
+
+SELECT DEPARTMENT_NAME, DEPARTMENT_ FROM departments;
+
+
+SELECT FIRST_NAME, DEPARTMENT_NAME 
+FROM employees INNER JOIN departments
+ON employees.department_id = departments.department_id;
+
+SELECT FIRST_NAME, DEPARTMENT_NAME 
+FROM employees JOIN departments
+ON employees.department_id = departments.department_id;
+
+SELECT e.FIRST_NAME, e.DEPARTMENT_ID, d.DEPARTMENT_ID,d.DEPARTMENT_NAME
+-- DEPARTMENT_ID 앞에는 departments / d 와도 무방
+-- FIRST_NAME과 DEPARTMENT_NAME 의 앞에 붙은 테이블명. 은 생략 가능(각각 테이블에만 있는 고유한 거니까)
+FROM employees e JOIN departments d
+-- e와 d는 이 문장 내에서만 사용 가능
+ON e.department_id = d.department_id;
+
+SELECT DEPARTMENT_NAME, DEPARTMENT_ID FROM departments;
+
+
+-- JOBS -> JOB_ID --> IT_PROG, .... --> JOB_TITLE
+-- EMPLOYEES -> JOB_ID REFERENCES JOBS(JOB_ID)
+
+SELECT * FROM jobs;
+SELECT * FROM employees;
+-- 사원이름, 직종이름, 급여조회
+SELECT e.first_name AS 사원이름, j.job_title AS 직종이름, e.salary AS 급여
+FROM employees e JOIN jobs j
+ON e.job_id = j.job_id;
+
+-- 사원이름,직종이름, 부서이름 조회
+-- 단, 급여 10000 이상인 사원만 대상
+
+SELECT FIRST_NAME, JOB_TITLE, DEPARTMENT_NAME, SALARY
+FROM employees e 
+JOIN jobs j
+JOIN departments d 
+ON e.department_id = d.department_id
+WHERE SALARY >= 10000;
+
+
+-- SUBQUERY 중첩
+-- SEATTLE 도시 근무 사원의 사원명, 부서명, 도시명 조회
+SELECT * FROM locations; 
+SELECT * FROM departments;
+SELECT FIRST_NAME, DEPARTMENT_NAME, CITY
+FROM locations l 
+JOIN departments d -- 모든 JOIN은 공통되는 컬럼이 있어야.. 이 경우 LOCATION_ID 
+ON l.location_id = d.location_id
+JOIN employees e 
+ON d.department_id = e.department_id
+WHERE CITY = "SEATTLE";
+
+
+SELECT FIRST_NAME, DEPARTMENT_NAME
+FROM employees e
+JOIN departments d
+ON e.department_id = d.department_id;
+
+SELECT *
+FROM employees
+WHERE DEPARTMENT_ID IS NULL;
+
+
+-- 조건 범위 외부에 있어도 조인
+-- 부서 배정되지 않은 사원도 포함하여 조인
+
+SELECT FIRST_NAME, DEPARTMENT_NAME
+FROM employees e LEFT OUTER JOIN departments d ON e.department_id = d.department_id;
+
+SELECT * FROM departments;
+-- 부서명 사원명 조회. 단, 명의 사원도 소속되지않은 부서도 포함하여 조인
+SELECT FIRST_NAME, DEPARTMENT_NAME
+FROM employees e RIGHT OUTER JOIN departments d ON e.department_id = d.department_id;
+
+-- 부서명,사원명 조회. 단 1명의 사원도 소속되지않은 부서도, 소속부서 없는 사원도 포함하여 조인
+SELECT FIRST_NAME, DEPARTMENT_NAME
+FROM employees e LEFT OUTER JOIN departments d ON e.department_id = d.department_id
+UNION
+SELECT FIRST_NAME, DEPARTMENT_NAME
+FROM employees e RIGHT OUTER JOIN departments d ON e.department_id = d.department_id;
+
+
+SELECT e.*, DEPARTMENT_NAME
+FROM employees e INNER JOIN departments d
+ON e.department_id = d.department_id;
+
+-- SUBQUERY와 JOIN은 같은결과 쿼리
+SELECT
+FROM (SELECT - INLINE VIEW);
+
+
+-- SEATTLE에서 근무하는 사원의 이름, 부서명, 국가 대륙조회
+SELECT INFORM.EMP, DEPART, RE
+FROM (
+SELECT FIRST_NAME EMP, DEPARTMENT_NAME DEPART, COUNTRY_NAME COUN, REGION_NAME re
+FROM employees e
+JOIN departments d ON e.DEPARTMENT_ID = d.department_id
+JOIN locations l ON d.location_id = l.location_id
+JOIN countries c ON l.country_id = c.country_id
+JOIN regions r ON c.region_id = r.region_id
+WHERE l.CITY = "SEATTLE"
+)
+INFORM;
+
+DESC employees;
+
+SELECT EMPLOYEE_ID, MANAGER_ID FROM employees;
+
+-- 각 사원의 정보 중에서 상사 사번 컬럼 포함
+-- 내 상사의 이름, 급여 조회
+
+SELECT MANAGER_ID FROM employees WHERE EMPLOYEE_ID = 150; -- 101 출력
+SELECT FIRST_NAME, SALARY, EMPLOYEE_ID FROM employees WHERE EMPLOYEE_ID = 145;
+
+SELECT FIRST_NAME, SALARY, EMPLOYEE_ID FROM employees
+WHERE EMPLOYEE_ID = (SELECT MANAGER_ID FROM employees WHERE EMPLOYEE_ID = 150);
+-- 내 상사
+
+SELECT FIRST_NAME, SALARY, EMPLOYEE_ID FROM employees
+WHERE EMPLOYEE_ID IN (SELECT MANAGER_ID FROM employees WHERE EMPLOYEE_ID = 150);
+
+
+-- SELF JOIN
+SELECT ME.employee_id 내사번, ME.FIRST_NAME 내이름, 
+ME.manager_id 상사사번, ME.employee_id 상사사번2, 
+MAN.FIRST_NAME 상사이름
+FROM employees ME 
+JOIN employees MAN
+ON ME.manager_id = MAN.manager_id;
+
+SELECT * FROM employees;
+
+-- 내 사번 내 이름 상사사번 상사이름 조회하되 상사없는 사원 포함하여 조회
+SELECT * FROM employees WHERE MANAGER_ID IS NULL;
+
+SELECT MY.employee_id 내사번, MY.first_name 내이름, 
+MN.employee_id 상사사번, MN.manager_id 상사사번2,
+MN.first_name 상사이름
+FROM employees MY
+LEFT OUTER JOIN employees MN
+ON MY.manager_id = MN.employee_id;
+
+SELECT MY.employee_id 내사번, MY.first_name 내이름, 
+MN.employee_id 상사사번, MN.manager_id 상사사번2,
+MN.first_name 상사이름
+FROM employees MY
+RIGHT OUTER JOIN employees MN
+ON MY.manager_id = MN.employee_id;
+
+SELECT MY.employee_id 내사번, MY.first_name 내이름, 
+MN.employee_id 상사사번, MN.manager_id 상사사번2,
+MN.first_name 상사이름
+FROM employees MY
+LEFT OUTER JOIN employees MN
+ON MY.manager_id = MN.employee_id;
+
+
+
+
+
+
 
 
 
