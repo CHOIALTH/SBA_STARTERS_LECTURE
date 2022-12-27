@@ -3,7 +3,6 @@ USE empdb;
 SELECT * FROM employees;
 
 DESC employees;
-
 -- 6장 데이터 관리
 -- employees 테이블 사번, 이름, 성, 급여, 입사일, 부서코드 컬럼 복사 테이블
 
@@ -13,6 +12,7 @@ CREATE TABLE emp_copy
 -- 괄호 안에 조회문장을 작성
 DESC emp_copy;
 SELECT * FROM emp_copy;
+ALTER TABLE emp_copy ADD CONSTRAINT PRIMARY KEY(employee_id);
 
 -- 1 이사원 15000 2022-12-26 10 삽입
 -- INSERT INTO 테이블명 (각 컬럼명 리스트) VALUES (값리스트);
@@ -26,7 +26,8 @@ INSERT INTO emp_copy VALUES
 
 INSERT IGNORE INTO emp_copy VALUES
 (8, "도원", "곽", 7000, "2012", NULL);
-
+INSERT IGNORE INTO emp_copy VALUES
+(7, "길동", "홍", null, "2002-09-26", 50);
 SHOW VARIABLES LIKE 'auto%';
 -- autocommit on 상태 : 
 
