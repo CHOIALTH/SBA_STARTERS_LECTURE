@@ -157,12 +157,79 @@ SELECT CURDATE(), CURRENT_TIMESTAMP(), CURRENT_DATE, CURTIME(), NOW(),SYSDATE();
 
 -- CAST CONVERT FORMAT + DATE_FORMAT (사용하기 쉽다)
 -- in java : 'yyyy-MM-dd HH:mm:ss'
-SELECT NOW(), DATE_FORMAT(NOW(), 'yyyy'
+SELECT NOW(), DATE_FORMAT(NOW(), '%Y/%m/%d'), DATE_FORMAT(NOW(), '%Y-%m-%d');
+SELECT NOW(), DATE_FORMAT(NOW(), '%y/%M/%D'), DATE_FORMAT(NOW(), '%Y-%m-%d');
+SELECT NOW(), DATE_FORMAT(NOW(), '%y/%c/%e');
 
 
+/* in SQL
+%Y, %y - 4/2자리 년도
+%m, %M, %c - 2자리 / 영문월이름 / 1,2자리 월표기
+%D, %d, %e - 서수식표기 / 2 / 1,2자리 일
+%W - 영문요일
+%a - 영문3글자요일
 
+%H, %h - 24/12 시간
+%i - 분
+%s - 초
+*/
 
+-- 2006년 입사자 급여 조회
+SELECT HIRE_DATE, SALARY FROM employees 
+WHERE HIRE_DATE >= '2006-01-01 00:00:00'
+AND HIRE_DATE < '2007-01-01 00:00:00'
+;
 
+SELECT HIRE_DATE, SALARY FROM employees WHERE HIRE_DATE LIKE '2006%';
+SELECT HIRE_DATE, SALARY FROM employees WHERE SUBSTR(HIRE_DATE,1,4) = '2006';
+SELECT HIRE_DATE, SALARY FROM employees WHERE INSTR(HIRE_DATE, '2006') = 1;
+SELECT HIRE_DATE, SALARY FROM employees WHERE DATE_FORMAT(HIRE_DATE, '%Y') = '2006';
+SELECT SUBSTR(HIRE_DATE, 1, 4), DATE_FORMAT(HIRE_DATE, '%Y'), SALARY FROM employees;
+
+-- 연도 추출함수 YEAR()
+
+SELECT UPPER(FIRST_NAME) 사원이름, HIRE_DATE 입사일,
+CASE
+WHEN WEEKDAY(HIRE_DATE) = 0 THEN '일요일'
+WHEN WEEKDAY(HIRE_DATE) = 1 THEN '월요일'
+WHEN WEEKDAY(HIRE_DATE) = 2 THEN '화요일'
+WHEN WEEKDAY(HIRE_DATE) = 3 THEN '수요일'
+WHEN WEEKDAY(HIRE_DATE) = 4 THEN '목요일'
+WHEN WEEKDAY(HIRE_DATE) = 5 THEN '금요일'
+ELSE '토요일'
+END 입사요일
+FROM employees
+;
+
+SELECT UPPER(FIRST_NAME) 사원이름, HIRE_DATE 입사일,
+CASE WEEKDAY(HIRE_DATE)
+WHEN 0 THEN '일요일'
+WHEN 1 THEN '월요일'
+WHEN 2 THEN '화요일'
+WHEN 3 THEN '수요일'
+WHEN 4 THEN '목요일'
+WHEN 5 THEN '금요일'
+ELSE '토요일'
+END 입사요일
+FROM employees
+;
+
+-- 두 날짜 사이의 계산
+SELECT CURDATE() 오늘날짜,
+SUBDATE(CURDATE(),INTERVAL 1 DAY) 어제날짜,
+ADDDATE(CURDATE(),INTERVAL 1 DAY) 내일날짜,
+ADDDATE(CURDATE(),INTERVAL 1 MONTH) 한달후날짜,
+ADDDATE(CURDATE(),INTERVAL 1 YEAR) 1년후날짜; -- 일반적으로 SQL 문법상 별칭으로 숫자를 맨앞에 쓰려면 ""로 묶어줘야함.
+
+-- 입사한 지 얼마나 경과했는지 경과일수 계산
+SELECT FIRST_NAME, DATEDIFF(NOW(),HIRE_DATE) 경과일수, 
+TRUNCATE(DATEDIFF(NOW(),HIRE_DATE)/7,0)경과주수, 
+TRUNCATE(DATEDIFF(NOW(),HIRE_DATE)/365,0)경과년수,
+PERIOD_DIFF(DATE_FORMAT(NOW(), "%Y%m"),DATE_FORMAT(HIRE_DATE, "%Y%m")) 경과개월수
+-- PERIOD_DIFF('202212','202112') 경과개월수
+-- PERIOD_DIFF(P1,P2) : P1과 P2에는 구분자나 특수기호 없이 정수만 들어가야 나온다.
+-- DATEDIFF(최근날짜, 이전날짜)
+FROM employees;
 
 
 
