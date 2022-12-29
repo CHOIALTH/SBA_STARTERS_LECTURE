@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class ConnectionTest {
+public class UpdateTest {
 
 	public static void main(String[] args) {
 		Connection con = null;
@@ -14,29 +14,32 @@ public class ConnectionTest {
 			// 0. jdbc driver 호출 - jdk비포함
 			// 1. db 연결
 			Class.forName(ConnectionInform.DRIVER_CLASS);
-			// DRIVER_CLASS = "org.mariadb.jdbc.Driver" 
-			// org.mariadb.jdbc.Drivera 클래스를 메모리에 로딩해줌
-			
 			con = DriverManager.getConnection 
 			(ConnectionInform.JDBC_URL,ConnectionInform.USERNAME,ConnectionInform.PASSWORD);
-			// DriverManager.getConnection 메서드를 이용해 Connection 객체 생성
 			// con 선언은 위에서 했으니, 앞에 Connection 붙이지X
 			System.out.println("연결 성공");
-			System.out.println(con.getAutoCommit());
+			System.out.println(con.getAutoCommit())  ;
 			// SQL 전송 결과 검색 - SELECT * FROM EMP 예외발생... 중단
 			Statement st = con.createStatement();
 			
 			
 			Scanner key = new Scanner(System.in);
-			System.out.print("상품명 : ");
-			String p_name = key.nextLine();
-			System.out.print("가격 : ");
-			int price = key.nextInt();
-			System.out.print("수량 : ");
-			int balance = key.nextInt();
+			System.out.print("수정사번 : ");
+			int employee_id = key.nextInt();
+			System.out.print("수정 이름 : ");
+			String name = key.next();
+			System.out.print("인상할 급여 : ");
+			double salary = key.nextDouble();
 			
-			String sql = "INSERT INTO product(p_name, price, balance)"
-					+ "VALUES("+p_name + "," + price + "," + balance + ")";
+			// 100 최신입 10000 -> 3가지 정보 입력
+			// emp_copy 테이블에서 사번 100 사원의 이름.. 신입(나머지 이름) 성 최(1글자) 현재 급여보다 10000 인상
+			// update 테이블명 SET 변경컬럼명 = 변경값 WHERE 변경조건식 
+			String first_name = "'" + name.substring(1) + "'";
+			String last_name = "'" + name.substring(0,1) + "'";
+			
+			String sql = 
+					"UPDATE EMP_COPY SET FIRST_NAME = " + first_name + ", LAST_NAME = "
+					+ last_name + ", SALARY = salary +" + salary + "WHERE EMPLOYEE_id =" + employee_id;
 			
 			int rowcount = st.executeUpdate(sql);
 			
