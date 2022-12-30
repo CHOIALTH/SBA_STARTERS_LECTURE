@@ -95,11 +95,15 @@ INSERT INTO user_info VALUES
 ('sqlse', 'sqlse', '김전문', 'jun3@kil.com', '010-11112222', '부산시 용산구 새싹')
 ;
 
+CREATE TABLE maxtest(a INT(11));
+DESC MAXTEST;
+SELECT * FROM maxtest;
+DROP TABLE maxtexst;
+
+SHOW DATABASEs;
 
 
-
-
-
+SELECT * FROM EMPLOYEES; 
 
 
 
