@@ -1,6 +1,9 @@
 package member_crud;
 
 public class MemberDTO {
+	// 자바 - int, double, date , String 
+	// db- int, double, datetime , char/varchar
+	// hire_date, "%Y"
 
 	String id, pw, name, email, phone, address, indate;
 
@@ -63,7 +66,7 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", phone=" + phone
-				+ ", address=" + address + "]";
+				+ ", address=" + address +", indate=" + indate +"]";
 	}
 	
 }

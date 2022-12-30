@@ -13,16 +13,17 @@ SELECT * FROM emp_copy WHERE EMPLOYEE_ID = 101;
 COMMIT;
 SELECT * FROM account_tbl;
 
+SHOW DATABASES;
+SHOW USER;
 CREATE USER jdbc IDENTIFIED BY 'jdbc';
 DROP USER jdbc;
 CREATE DATABASE memberdb;
 DROP DATABASE memberdb;
-GRANT ALL privilleges ON memberdb.* TO jdbc@'%';
--- memberdb.* : sql 기능 다 허용하겠다
---  memberdb.select : select만 허용하겠다 .. 
+GRANT ALL privileges ON memberdb.* TO jdbc@'%';
 
+select host,user from mysql.user; -- DB 계정 목록 보는 방법
 
-
+SHOW GRANTS FOR 'jdbc'@'%';
 
 
 

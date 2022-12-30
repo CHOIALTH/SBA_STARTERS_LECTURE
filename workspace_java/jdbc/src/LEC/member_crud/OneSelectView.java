@@ -8,22 +8,20 @@ public class OneSelectView implements View {
 	@Override
 	public void input() {
 		Scanner key = new Scanner(System.in);
-		MemberDAO dao = new MemberDAO();
-		int total = dao.getTotalMember();//10
-		int pagenum = 0;
-		int memberPerPage= 3;
-		if( total % 3 == 0 ) { pagenum = total / memberPerPage;}
-		else {pagenum = total / memberPerPage + 1 ; }
-		System.out.println("1 - " + pagenum + " 페이지까지 입력 가능합니다.");
-		System.out.print("페이지번호 입력 : ");
-		int currentpage = key.nextInt();
-
-		ArrayList<MemberDTO> list = dao.getMemberList
-				(currentpage,  memberPerPage);
-		for(MemberDTO d : list) {
-			System.out.println(d);// id, name, indate 
-		}
+		System.out.print("아이디 입력 : ");
+		String id = key.next();
+		System.out.print("암호 입력 : ");
+		String pw = key.next();
 		
+		MemberDAO dao = new MemberDAO();
+		MemberDTO dto = dao.getMember(id, pw);
+		//id 일치하면 pw  일치하면 - 정보 저장 리턴
+		// id 일치하면 pw  불일치하면 - "4번 암호 맞지 않습니다"(id만 저장)
+		// id 불일치하면 - "1번 회원가입부터 하세요"(dto  null)
+		//System.out.println("'" + dto.getId() + "'");
+		if(dto != null && dto.getPw() != null) {
+			System.out.println(dto);
+		}
 	}
 
 }

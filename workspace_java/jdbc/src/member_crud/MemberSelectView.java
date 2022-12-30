@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import member_crud.MemberDTO;
 
-public class MemberUpdateView implements View {
+public class MemberSelectView implements View {
 	public void input( ) {
 		
 		//MemberDAO 메소드 호출

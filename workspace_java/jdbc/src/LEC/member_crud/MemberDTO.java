@@ -13,6 +13,17 @@ public class MemberDTO {
 		this.indate = indate;
 	}
 	
+	
+	public MemberDTO(String id, String pw, String name, String email, String phone, String address, String indate) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.indate = indate;
+	}
 	public String getId() {
 		return id;
 	}
