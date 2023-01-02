@@ -28,7 +28,7 @@ public class Lec221231 {
 		}
 	}
 	
-	static void printMultiplicationTest2(int table, int from, int to) {
+ 	static void printMultiplicationTest2(int table, int from, int to) {
 		for(int i = from; i <= to; i++) {
 			System.out.printf("%d * %d = %d", table, i, table * i).println();
 		// .println() 붙여서 줄바꿈 효과 줄 수도 있음
