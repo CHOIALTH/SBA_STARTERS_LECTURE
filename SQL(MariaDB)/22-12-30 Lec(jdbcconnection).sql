@@ -17,9 +17,10 @@ flush PRIVILEGES; -- 권한 갱신
 
 grant all privileges on memberdb.* to 'jdbc'@'%' identified by 'jdbc' with grant option;
 
+CREATE TABLE deletemember (SELECT * FROM member);
 
 
 
 
 
-
+ 	

@@ -1,4 +1,4 @@
-package member_crud;
+package jdbc.member_crud_Lec;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
