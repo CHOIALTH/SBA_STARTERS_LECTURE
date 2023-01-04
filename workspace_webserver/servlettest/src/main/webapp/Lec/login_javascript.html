@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인폼</title>
+<script src="js/jquery-3.6.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('form').on('submit', function(){
+		//1. 아이디입력란에 admin  administrator administration 중
+		// 한개 입력시 role 변수값 admin 설정
+		// 아니면 role 변수값 user 설정
+		var id = $('input:text').val();
+		if(id == "admin" || id == "administrator" || id == "administration"){
+			$('input:hidden').val("admin");
+		}
+		else{
+			$('input:hidden').val("user");
+		}
+		
+		//2. form action 속성값 = 'loginjs'
+		//$('form').attr("action", "loginjs");
+		this.action = "loginjs";
+		//3. 메소드 방식은 post로 설정
+		this.method="post";
+		
+	});
+});
+
+</script>
+</head>
+<body>
+<h1>로그인하세요</h1>
+<form> 
+아이디입력 : <input type="text" name="id2"><br>
+암호입력 : <input type="password" name="pw"><br>
+<input type=hidden name="role" >
+<input type=submit value="로그인">
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인폼</title>
+</head>
+<body>
+<h1>로그인하세요</h1>
+<!-- 
+서블릿 url  -- "/a" -- http://localhost:8081/servlettest/a
+html태그 속성 url -- "/a" -- http://localhost:8081/a
+ -->
+<!-- <form action="http://localhost:8081/servlettest/loginprocess" > -->
+<!-- <form action="loginprocess" > -->
+<form action="/servlettest/loginprocess" method="post"> 
+아이디입력 : <input type="text" name="id"><br>
+암호입력 : <input type="password" name="pw"><br>
+<select NAME="title" multiple="multiple">
+<option> 웹클라이언트과정</option>
+<option> 웹서버과정</option>
+<option> 데이터베이스과정</option>
+<option> 서비스배포과정</option>
+</select>
+
+<input type=submit value="로그인">
+</form>
+<a href="/servlettest/loginprocess?id=a&pw=1&title=spring"> 서블릿호출 링크 </a>
+<button id="btn">버튼클릭</button>
+<script>
+document.getElementById("btn").onclick = function(){
+	location.href="/servlettest/loginprocess?id=javascript&pw=1&title=spring";
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -10,18 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/flow")
 public class FlowServlet extends HttpServlet {
-
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("1.init 호출(수정)");
 	}
-
 	public void destroy() {
 		System.out.println("n.destroy 호출");
 	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("n.doget 호출");
-	
+	protected void doGet
+	(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("n.doGet 호출");
 	}
 
 }
