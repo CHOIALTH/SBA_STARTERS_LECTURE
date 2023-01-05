@@ -87,7 +87,7 @@ public class MemberDAO {
 		return count;
 	}//getTotal	
 	
-	ArrayList<MemberDTO> getMemberList(int page, int memberPerPage) {
+	public ArrayList<MemberDTO> getMemberList(int page, int memberPerPage) {
 		ArrayList<MemberDTO> list = new ArrayList();
 		Connection con= null;
 		PreparedStatement pt = null;
@@ -108,7 +108,7 @@ public class MemberDAO {
 			MemberDTO dto = new MemberDTO
 					(rs.getString("id"), rs.getString("name"),rs.getString("indate") );	
 			dto.setPw(rs.getString("pw"));
-		  list.add(dto);
+			list.add(dto);
 		}
 		//dto 전달 내용을 member 테이블 입력
 		//회원가입일 now() 설정 

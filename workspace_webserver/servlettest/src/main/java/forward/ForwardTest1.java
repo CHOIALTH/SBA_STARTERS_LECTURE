@@ -3,7 +3,6 @@ package forward;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +24,8 @@ public class ForwardTest1 extends HttpServlet {
 		 out.println("<h1> forwardTest1 클래스 입니다</h1>");
 		 
 		RequestDispatcher rd = request.getRequestDispatcher("/forward2"); // "웹어플리케이션명포함"
-		rd.forward(request, response); // forward1,2가 요청객체, 응답객체를 공유하고 있다
+		rd.forward(request, response);
+		// "이동". forward1,2가 요청객체, 응답객체를 공유하고 있다
 		
 		// 실행결과 URL 상 forward1 인점은 변화가 없어보이지만, 실질적으로 forward2의 기능을 같이 사용중인 것
 	}
