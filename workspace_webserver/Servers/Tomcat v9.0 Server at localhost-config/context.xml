@@ -26,4 +26,34 @@
     <!--
     <Manager pathname="" />
     -->
+
+    <Resource
+    		name = "jdbc/mydb"
+    		auth = "Container"
+    		type = "javax.sql.DataSource"
+    		driverClassName ="org.mariadb.jdbc.Driver"
+    		url = "jdbc:mariadb://localhost:3306/empdb"
+    		username = "jdbc"
+    		password = "jdbc"
+    		maxActive = "5" maxIdle = "3" maxWait = "-1"
+    	/>	
+
+    		<!-- name : 아무이름이나 지으면 됨 -->
+    		<!-- maxIdle 3개정도의 여유분을 둠 -->
+    		<!-- maxWait = "-1" 즉각 처리한다  -->
+
+
 </Context>
+
+
+
+
+
+
+
+
+
+
+
+
+

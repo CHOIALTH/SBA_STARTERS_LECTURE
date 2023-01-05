@@ -6,6 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import dto.MemberDTO;
 
 public class MemberDAO {
@@ -124,10 +128,23 @@ public class MemberDAO {
 		PreparedStatement pt= null;
 		MemberDTO dto= null;
 		try {
-		Class.forName(ConnectionInform.DRIVER_CLASS);
-		//1.db 연결
-		con = DriverManager.getConnection
-		(ConnectionInform.JDBC_URL, ConnectionInform.USERNAME, ConnectionInform.PASSWORD);
+			Context initContext = new InitialContext();
+			// context.xml 설정 읽어오기 위함
+			Context envContext = (Context)initContext.lookup("java:/comp/env");
+			// java:/comp(component)/env(environment) 
+			// : 자바와 연관된 설정을 찾기위한 일종의 키워드
+			// initContext.lookup("java:/comp/env")가 obj를 리턴하므로 Context로 형변환 해줘야
+			DataSource ds = (DataSource)envContext.lookup("jdbc/mydb");
+			con = ds.getConnection();
+			// pool로부터 con 빌려온다
+			// 이상 읽어오기위한 설정 완료 ( 위 4문장이 세트다..)
+			
+			
+			/*
+			 * Class.forName(ConnectionInform.DRIVER_CLASS); //1.db 연결 con =
+			 * DriverManager.getConnection (ConnectionInform.JDBC_URL,
+			 * ConnectionInform.USERNAME, ConnectionInform.PASSWORD);
+			 */
 		String sql= "select * from member where id=?";
 		//rs.next() true 
 		pt = con.prepareStatement(sql);
@@ -159,7 +176,7 @@ public class MemberDAO {
 		}finally {
 			try {
 				pt.close();
-				con.close();
+				con.close(); // 필요없으면 pool로 반납
 			}catch(Exception e) {}
 		}
 		return dto;

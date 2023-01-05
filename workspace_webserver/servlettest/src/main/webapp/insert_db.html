@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.joinBox{
+	    width: 780px; 
+	    height: 550px;
+   		margin: 0 auto; /* 블록요소를 부모영역에서 가운데 처리 */
+	}
+	.joinBox form{
+   		width: 100%; height: 450px;
+    		background-color: #fff;
+    		/* 패딩수치를 인사이드 처리 */
+    		padding: 60px; box-sizing: border-box;
+	}
+
+</style>
+</head>
+<body>
+	<div class="joinBox">
+		<h1>회원가입</h1>
+		<form>
+			<fieldset>
+				<legend>회원가입</legend>
+				<label>아이디</label><input type="text" placeholder="10자 이내"><br>
+				<label>비번</label><input type="password" placeholder="10자 이내"><br>
+				<label>이름</label><input type="text" placeholder="10자 이내"><br>
+				<label>연락처</label><input type="text" placeholder="11자 이내(숫자만)"><br>
+				<label>이메일</label><input type="text" placeholder="30자 이내"><br>
+				<label>주소</label><input type="text" placeholder="50자 이내">
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
