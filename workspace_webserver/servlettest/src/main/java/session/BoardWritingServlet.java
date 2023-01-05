@@ -17,7 +17,6 @@ public class BoardWritingServlet extends HttpServlet {
 		// 로그인 id 공유
 		String sessionid = (String)session.getAttribute("sessionid");
 	
-
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		if(session.getAttribute("sessionid") != null) {

@@ -10,21 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/bank")
+public class BankServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 요청 보낸 브라우저 세션 있니?
-		// true(두번째 이후 요청)이면 이전 session 공유
-		HttpSession session = request.getSession();// 로그인 id 공유
+		HttpSession session = request.getSession();
+		// 로그인 id 공유
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		// 로그인 먼저 하고 나서, 로그아웃
 		if(session.getAttribute("sessionid") != null) {
-			out.println("<h1>" +session.getAttribute("sessionid") + "님 로그아웃하셨습니다</h1>");
-			session.removeAttribute("sessionid");
+			out.println("<h1>" + session.getAttribute("sessionid") 
+			+ "님 인증되셨습니다.(5분간 유효함)</h1>");		
+			session.setMaxInactiveInterval(60 * 5); // 60s * 5
 		}
 		else {
-			out.println("<h1>로그인부터 하세요. 그래야 로그아웃도 가능합니다~</h1>");
+			out.println("<h1><a href ='loginsession?id=test&pw=1111'>로그인</a>부터하세요</h1>");
 		}
 	}
 

@@ -10,7 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/loginsession")
+//http://ip:port/servlettest/,,,,,,
+//@WebServlet("/loginsession")
+//@WebServlet("/login/*")
+
+
+@WebServlet("/*")
+// 여러개 url로 1개의 서블릿 호출
 public class LoginSessionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
@@ -26,9 +32,10 @@ public class LoginSessionServlet extends HttpServlet {
 		if(id != null && pw != null) {
 			out.println("<h1>로그인하셨습니다</h1>");
 			out.println("<h1>사용 가능한 메뉴는 다음과 같습니다</h1>");
-			out.println("<h1><a href = '/mypage'>내정보 보러 가기</a></h1>");
-			out.println("<h1><a href = ''>글 쓰러 가기</a></h1>");
-			out.println("<h1><a href = ''>로그아웃 하러 가기</a></h1>");
+			out.println("<h1><a href = 'bank'>은행 업무 보기</a></h1>");
+			out.println("<h1><a href = 'mypage'>내정보 보러 가기</a></h1>");
+			out.println("<h1><a href = 'boardwriting'>글 쓰러 가기</a></h1>");
+			out.println("<h1><a href = 'logout'>로그아웃 하러 가기</a></h1>");
 			out.println("<h1>로그인 정보 유효시간은 " + session.getMaxInactiveInterval() + "초입니다.</h1>");
 			
 		}
