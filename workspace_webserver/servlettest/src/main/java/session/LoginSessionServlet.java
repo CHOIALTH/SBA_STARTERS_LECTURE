@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 //@WebServlet("/login/*")
 
 
-@WebServlet("/*")
+@WebServlet("/login")
 // 여러개 url로 1개의 서블릿 호출
 public class LoginSessionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -152,7 +152,13 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="servlettest" path="/servlettest" reloadable="true" source="org.eclipse.jst.jee.server:servlettest"/></Host>
+      <Context docBase="servlettest" 
+      	path="/servlettest" 
+      	reloadable="true" 
+      	source="org.eclipse.jst.jee.server:servlettest"/></Host>
+      	<!-- path : "/컨텍스트이름"(웹앱과 이름이 다를수도 있으며, 웹브라우저에서 실제 웹앱을 요청하는 이름) ;
+      	 docBase : "실제 웹앱의 WEB-INF 디렉터리 위치"(WEB-INF 상위 폴더까지의 경로) 
+      	 reloadable = "true 또는 false"(실행 중 소스코드 수정시, 바로 갱신할지 여부. false로 설정시 톰캣을 다시 실행해야 추가한 소스코드 기능이 반영됨)-->
     </Engine>
   </Service>
 </Server>

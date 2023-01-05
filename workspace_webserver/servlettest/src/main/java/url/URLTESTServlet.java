@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // 홈페이지 시작화면. 요청 url --> url 분석(Controller) --> dao, dto 리턴 / 컬렉션 리턴(Model.. 화면에 보여줄 data) ---> 보여줄 화면(View)
-@WebServlet("/*")
+@WebServlet("/urltest")
 public class URLTESTServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

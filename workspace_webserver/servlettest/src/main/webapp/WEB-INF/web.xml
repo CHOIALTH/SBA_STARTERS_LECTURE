@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+	version="4.0">
   <display-name>servlettest</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -10,14 +13,34 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 브라우저에서 요청하는 매핑이름에 대해 실제로 실행하는 서블릿 클래스를 설정하는 태그  -->
   <servlet>
   	<servlet-name>aa</servlet-name> <!-- 잠시 이름을 aa로 두겠다 -->
-  	<servlet-class>servlettest.AServlet</servlet-class> <!-- 실제 클래스 -->
+  	<!-- 브라우저에서 요청하는 매핑이름에 대해 실제로 기능을 수행하는 실제 서블릿 클래스를 설정하는 태그 -->
+  	<servlet-class>servlettest.AServlet</servlet-class> 
+  </servlet>
+    <servlet>
+  	<servlet-name>aaa</servlet-name>
+  	<servlet-class>selfstudy.FirstServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>bbb</servlet-name>
+  	<servlet-class>selfstudy.SecondServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
+ 	 <!-- <servlet> 과 <servlet-mapping> 태그 내의 <servlet-name>태그 값을 같게 둠으로 서로 연결시킴-->
  	 <servlet-name>aa</servlet-name> <!-- 잠시 이름을 aa로 두겠다 -->
  	 <url-pattern>/a</url-pattern> <!-- url을 /a로 하겠다 -->
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>aaa</servlet-name>
+  	<url-pattern>/first</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    	<servlet-name>bbb</servlet-name>
+  	<url-pattern>/second</url-pattern>
+  </servlet-mapping>
 </web-app>
 <!-- 이 전체의 표현이 @WebServlet("/a")과 같은 역할 -->
+<!-- 여러 개의 서블릿 매핑 시 <servlet> 태그 먼저 정의하고, <servlet-mapping> 태그 정의한다 -->
