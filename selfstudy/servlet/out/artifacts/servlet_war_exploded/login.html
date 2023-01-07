@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>서블릿로그인</title>
+    <style>
+        fieldset{
+            width : 50%;
+        }
+    </style>
+</head>
+<body>
+<h1>서블릿을 통한 로그인 시도해본다</h1>
+<form action="login">
+    <fieldset>
+        <legend>로그인</legend>
+        <label>
+            구분
+            <input type="checkbox" name="classification" value="학생">학생
+            <input type="checkbox" name="classification" value="교사">교사
+            <input type="checkbox" name="classification" value="일반인">일반인
+        </label><br>
+        <label>
+            아이디
+            <input type="text" name="id">
+        </label><br>
+        <label>
+            비밀번호
+            <input type="password" name="pw">
+        </label><br>
+        <label>
+            <input type="submit" value="로그인">
+        </label>
+        <label>
+            <input type="reset" value="재입력">
+        </label>
+        <!--<label>
+            <input type>
+        </label>-->
+
+    </fieldset>
+</form>
+</body>
+</html>
