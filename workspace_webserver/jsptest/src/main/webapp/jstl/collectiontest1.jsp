@@ -1,8 +1,8 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="dto.MemberDTO"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +10,33 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- varStatus="vs"에서 vs는 변수명으로, 어떻게 설정해도 무방하다 -->
+	<c:forEach begin="1" end="10" step="2" var="odd" varStatus="vs">
+	${odd } : ${vs.current }<br>
+	</c:forEach>
 	<%
 	String array[] = {"red", "black","white","green","blue"};
-	pageContext.setAttribute("colors", array);
 	%>
-	<!-- pageScope. 생략해도 됨을 알 수 있다 -->
+	<c:forEach items="${colors}" var="col" varStatus="st">
+		<h3>${st.index }번째 데이터 = ${col } : ${st.current }번 반복중입니다</h3>
+		<h3>첫번째냐? - ${st.first } : 마지막이냐? - ${st.last }</h3>
+	</c:forEach>
+	
+	<c:forEach items="${colors}"  varStatus="st">
+		<c:if test="${st.first }">
+			<h1>첫번째 = ${st.first }</h1>
+		</c:if>
+		<c:if test="${st.last }">
+			<h1>마지막 = ${st.last }</h1>
+		</c:if>
+	</c:forEach>
+	
+	<jsp:useBean id="list" class="java.util.ArrayList"/>
+	<jsp:useBean id="dto" class="dto.MemberDTO"/>
+	<jsp:setProperty property="id" name="dto" value="el"/>
+
+
+
 	${colors[0] } : ${pageScope.colors[0] } : ${colors[0].toUpperCase() }<br>
 	<!-- 존재하지 않는 index는 공백으로 출력됨 -->
 	${colors[100] } : ${pageScope.colors[100] } : ${colors[100].toUpperCase() }<br> 
@@ -24,13 +46,6 @@
 	${"100" += "100" }<br>
 	
 	<!-- 오류출력.. 제너릭으로 <MemberDTO> 출력해도 인식을 못함 -->
-	<%-- <jsp:useBean id="list" class="java.util.ArrayList<MemberDTO>"/> --%>
-	<jsp:useBean id="list" class="java.util.ArrayList"/>
-<%-- 	<%
-	ArrayList<MemberDTO> list = new ArrayList();
-	%>  위 코드와 같은 역할--%>
-	<jsp:useBean id="dto" class="dto.MemberDTO"/>
-	<jsp:setProperty property="id" name="dto" value="el"/>
 	<%
 	list.add(dto); // id만 하나 들어감
 	list.add(new MemberDTO("MEM1","1","회원1","01012341234","이메일1@a.com","서울시 용산구", "2022-12-12"));
@@ -48,6 +63,17 @@
 	${list.get(3).id } : ${list[3].id }<br>
 	${list.get(4).id } : ${list[4].id }<br>
 	${list.get(5).id } : ${list[5].id }<br>
+	
+	<table border=3>
+		<tr>
+		<td>${vs.current }</td>
+	</table>
+	
+	
+	
+	
+	
+	
 	<%
 	HashMap<String, String> map = new HashMap(); // jsp의 변수로 map을 만든건데, 바로 el에서 사용할 수 없다.
 	// key는 똑같은 값 들어가면 안됨!!!
@@ -63,8 +89,8 @@
 	pageContext.setAttribute("colormap", map);
 	%>
 	<!-- 순서대로 저장하는 게 아니라 hashmap에서는 [] index 사용할 수 없다  -->
-	<%-- ${colormap[0] } --%>
-	<%-- ${colormap."빨강" }<br>--%>
+	${colormap[0] }
+	${colormap."빨강" }<br>
 	${colormap["빨강"] }<br> <!-- "빨강"key값의 정보 가져와라~ -->
 	${empty colormap["빨강색"]?"해당 색 없음":colormap["빨강색"] }<br> <!-- "빨강"의 key값을 가져와라~ -->
 	${colormap.one }<br>
