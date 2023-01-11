@@ -10,7 +10,7 @@
 		String logintime = null;
 		String result = null;
 	%>
-	<c:if test="${param.id.equals(\"ajax\")&&param.pw.equals(\"ajax\")}">
+	<c:if test="${param.id.equals(\"ajax\")&& param.pw.equals(\"ajax\")}">
 	
 		<% 
 		logintime = new SimpleDateFormat("yyy년MM월dd일 HH시mm분ss초 ").format(new Date()); 
