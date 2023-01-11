@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- <jsp:useBean> 액션태그와 같은 역할. 
+class의 spring.tv.~~ 부분을 바꾸면 출력 내용이 바뀐다. (이때 main은 바뀌는것x. spring이 주는대로 받음) -->
+<!-- <bean id = "tv" class = "spring.tv.SamsungTV" scope="singleton"/>-->
+<bean id = "tv" class = "spring.tv.SamsungTV" scope="prototype"/>
+<bean id = "tv2" class = "spring.tv.LgTV" />
+<bean id = "tv3" class = "spring.tv.SamsungTV" />
+
+</beans>
