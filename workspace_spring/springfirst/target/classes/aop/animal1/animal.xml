@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<bean id="dog" class="aop.animal1.Dog"/>
+<bean id="cat" class="aop.animal1.Cat"/>
+<bean id="rabbit" class="aop.animal1.Rabbit"/>
+
+
+<bean id="animalaspect" class="aop.animal1.AnimalAspect" />
+
+<aop:config>
+	<aop:pointcut expression="execution (public String aop.animal1.*.lunch())" id="pc"/>
+	<aop:aspect id="aop" ref="animalaspect">
+		<aop:around method="around" pointcut-ref="pc"/> <!-- 이경우 그냥 AnimalAspect.java에서 메서드명을 around로 일치시킨 것  -->
+	</aop:aspect>
+</aop:config>
+
+</beans>
