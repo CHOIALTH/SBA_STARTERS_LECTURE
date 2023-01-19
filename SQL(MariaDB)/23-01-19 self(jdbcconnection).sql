@@ -1,3 +1,6 @@
+SHOW DATABASES;
+CREATE DATABASE memberdb;
+USE memberdb;
 create table member
 (
 id varchar(10) not null PRIMARY KEY,
@@ -6,5 +9,6 @@ name varchar(10) ,
 phone char(11)  CHECK(phone LIKE '010%'),
 email varchar(30) UNIQUE,
 address varchar(50),
-indate 
+indate DATETIME
 );
+DESC member;	

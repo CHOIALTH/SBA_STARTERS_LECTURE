@@ -1,0 +1,15 @@
+쿼리문
+로그인페이지
+select id / pw 조회
+
+회원가입페이지
+id/email 중복확인시 select -> user
+가입시 insert -> user
+
+메인페이지
+1> awarerole false 시 확인하기 버튼 누르면 update -> user
+2> comment : 첫 입력시(insert -> comment) / (가능할경우)수정시(update -> comment)
+
+메인페이지 -> match 1 / 2 누르면 보여질 페이지 만들어야하지 않을까?
+
+
