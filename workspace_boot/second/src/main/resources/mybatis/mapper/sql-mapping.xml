@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mybatis.memberDAO">
+<mapper namespace="spring.mybatis.MemberDAO">
+
 <!-- member테이블 컬럼명 === MemberDTO클래스 변수명저장 -->
 <select id="memberlist" resultType="memberdto">
  select * from member

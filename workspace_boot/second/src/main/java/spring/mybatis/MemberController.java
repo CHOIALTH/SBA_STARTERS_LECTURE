@@ -2,8 +2,6 @@ package spring.mybatis;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
@@ -64,6 +64,8 @@ public class MemberController {
 	@PostMapping("/memberinsert")
 	public ModelAndView  memberinsert(MemberDTO dto){
 		//dto.setxxxx(xxx파라미터자동저장)
+		//파일업로드 c:upload 저장처리
+		// dto image변수에 c:upload 저장파일명 세팅
 		MemberDTO db_dto = service.onemember(dto.getId());
 		String insertresult = "";
 		

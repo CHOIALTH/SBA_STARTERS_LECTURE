@@ -34,6 +34,7 @@
 		<th><label for="address"> 주소 입력 : </label> </th>
 		<td> <input type="text" id="address" name="address" required></td>
 		</tr>
+		
 		<tr>
 		<th><input type="submit" value="회원가입"></th>
 		<td><input type="reset" value="취소"></td>

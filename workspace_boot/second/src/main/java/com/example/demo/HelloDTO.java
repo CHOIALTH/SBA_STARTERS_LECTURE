@@ -13,4 +13,5 @@ public class HelloDTO {
 	public void setModel(String model) {
 		this.model = model;
 	}
+	
 }
