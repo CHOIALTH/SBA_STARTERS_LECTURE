@@ -5,9 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.oracle.wls.shaded.org.apache.regexp.recompile;
 
 @Controller
 public class BoardController {
@@ -34,4 +38,40 @@ public class BoardController {
 		mv.setViewName("board/list");
 		return mv;
 	}
+	@RequestMapping("/oneboard")
+	public ModelAndView oneboard(int seq) {
+		ModelAndView mv = new ModelAndView();
+		
+		BoardDTO dto = service.getOneBoard(seq);
+		mv.addObject("oneboard",dto); // oneboard라는 이름으로 dto 객체를 모델에 넣어줌(?)
+		
+		mv.setViewName("board/oneboard");
+		
+		return mv;
+	}
+	@GetMapping("/insertboard")
+	public String insertboardform() {
+		return "board/insertform"; // login 세션 전달
+	}
+	@PostMapping("/insertboard")
+	public ModelAndView insertboardprocess(BoardDTO dto) {
+		ModelAndView mv = new ModelAndView();
+		service.insertBoard(dto); // 제목 내용 (세션id - 작성자)
+		
+		/*
+		 * mv.addObject("list",1페이지 3게시물); 
+		 * mv.addObject("totalboard", 전체게시물수); 
+		 * mv.setViewName("board/list"); // board/list.jsp 뷰
+		 */
+		
+		mv.setViewName("redirect:/boardList"); // 매핑url / boardlist 메소드 호출
+		return mv;
+	}
 }
+
+
+
+
+
+
+

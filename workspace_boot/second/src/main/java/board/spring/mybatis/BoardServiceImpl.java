@@ -19,4 +19,11 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardDTO> getBoardList(int limit){
 		return dao.getBoardList(limit);
 	}
+
+	@Override
+	public BoardDTO getOneBoard(int seq) {
+		dao.updateViewCount(seq);
+		return dao.getOneBoard(seq);
+	}
+	
 }
