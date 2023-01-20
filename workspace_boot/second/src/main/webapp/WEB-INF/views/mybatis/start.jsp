@@ -16,6 +16,7 @@
 		<li><a href="<%=request.getContextPath()%>/memberinsert">회원가입하러 가기(로그인필요없음) </a></li>
 		<li><a href="<%=request.getContextPath()%>/memberinform">내정보 보러 가기 </a></li>
 		<li><a href="<%=request.getContextPath()%>/memberdelete">회원탈퇴하기 </a></li>	
+		<li><a href="<%=request.getContextPath()%>/boardlist">게시판가기 </a></li>	
 	</ul>
 </h3>
 <% 

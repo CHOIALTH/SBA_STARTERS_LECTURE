@@ -8,7 +8,8 @@
 </head>
 <body>
 <!-- html form(파라미터이름)--MemberDTO(프로퍼티이름)--MEMBER테이블(컬럼이름)저장 -->
-	<form action="<%=request.getContextPath() %>/memberinsert" method="POST">
+	<form action="<%=request.getContextPath() %>/memberinsert" 
+	enctype="multipart/form-data" method="POST">
 	<table>
 		<tr>
 		<th><label for="id"> jsp아이디 입력 : </label> </th>
@@ -34,7 +35,10 @@
 		<th><label for="address"> 주소 입력 : </label> </th>
 		<td> <input type="text" id="address" name="address" required></td>
 		</tr>
-		
+		<tr>
+		<th><label for="imagefile"> 사진 선택 : </label> </th>
+		<td> <input type="file" id=imagefile" name="imagefile" ></td>
+		</tr>		
 		<tr>
 		<th><input type="submit" value="회원가입"></th>
 		<td><input type="reset" value="취소"></td>

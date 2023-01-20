@@ -1,6 +1,9 @@
 package spring.mybatis;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -8,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
@@ -15,7 +20,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 	@Autowired
-	@Qualifier("service")
+	@Qualifier("memberservice")
 	MemberService service;
 	
 	@RequestMapping("/")
@@ -62,13 +67,28 @@ public class MemberController {
 	}
 	
 	@PostMapping("/memberinsert")
-	public ModelAndView  memberinsert(MemberDTO dto){
+	public ModelAndView  memberinsert(MemberDTO dto) throws IOException{
 		//dto.setxxxx(xxx파라미터자동저장)
 		//파일업로드 c:upload 저장처리
 		// dto image변수에 c:upload 저장파일명 세팅
+		String savePath = "c:/upload/";
+		MultipartFile  imagefile = dto.getImagefile();
+		
+		//파일명1 추출
+		String filename1 = imagefile.getOriginalFilename();
+		//파일이름 . 확장자 분리
+		String beforeext1 = filename1.substring(0, filename1.lastIndexOf('.'));
+		String ext1 = filename1.substring(filename1.lastIndexOf('.'));
+		//	UUID.randomUUID()
+		String newfilename1 = beforeext1 +"(" + UUID.randomUUID().toString() +")" + ext1;
+		//파일내용1 추출해서 c:/upload/filename1 저장 
+		File serverfile1 = new File(savePath + newfilename1);
+		imagefile.transferTo(serverfile1);
+		
+		dto.setImage(newfilename1);
+		
 		MemberDTO db_dto = service.onemember(dto.getId());
 		String insertresult = "";
-		
 		if(db_dto == null) {
 			int row = service.insertmember(dto);//indate 없다
 			if(row == 1) {
@@ -162,6 +182,29 @@ public class MemberController {
 		}
 		mv.setViewName("mybatis/start");
 		return mv;
+	}
+	
+	@ResponseBody
+	@GetMapping("/othermemberinform")
+	public MemberDTO othermemberinform(HttpSession session , String id){
+		MemberDTO dto = new MemberDTO();
+		String model = null;
+		if(session.getAttribute("loginid") == null) {
+			model =  "로그인이전입니다.";
+			dto.setId(model);
+		}
+		else {
+			String loginid = (String)session.getAttribute("loginid");
+			if(!loginid.equalsIgnoreCase("admin")) {
+				model = "회원정보 볼 권한 없습니다";
+				dto.setId(model);
+			}
+			else {
+				dto = service.onemember(id);
+			}
+		}
+
+		return dto;
 	}
 	
 }

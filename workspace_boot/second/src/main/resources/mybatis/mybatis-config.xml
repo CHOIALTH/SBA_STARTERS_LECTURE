@@ -3,9 +3,8 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="spring.mybatis.MemberDTO" 
-		alias="memberdto"/>
+		<typeAlias type="spring.mybatis.MemberDTO" alias="memberdto"/>
+		<typeAlias type="board.spring.mybatis.BoardDTO" alias="boarddto"/>
 	</typeAliases>
 	
 </configuration>  
-  
