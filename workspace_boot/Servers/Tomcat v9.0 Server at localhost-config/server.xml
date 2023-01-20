@@ -17,7 +17,11 @@
 --><!-- Note:  A "Server" is not itself a "Container", so you may not
      define subcomponents such as "Valves" at this level.
      Documentation at /docs/config/server.html
+<<<<<<< HEAD
  --><Server port="8085" shutdown="SHUTDOWN">
+=======
+ --><Server port="8005" shutdown="SHUTDOWN">
+>>>>>>> 959a65b2de54e081f051c177d31304ae7386af6f
   <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -60,7 +64,11 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
+<<<<<<< HEAD
     <Connector connectionTimeout="20000" port="8085" protocol="HTTP/1.1" redirectPort="8443"/>
+=======
+    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+>>>>>>> 959a65b2de54e081f051c177d31304ae7386af6f
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -152,7 +160,11 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
+<<<<<<< HEAD
       <Context docBase="demo" path="/demo" reloadable="true" source="org.eclipse.jst.j2ee.server:demo"/></Host>
+=======
+      </Host>
+>>>>>>> 959a65b2de54e081f051c177d31304ae7386af6f
     </Engine>
   </Service>
 </Server>
