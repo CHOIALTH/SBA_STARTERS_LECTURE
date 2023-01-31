@@ -13,7 +13,7 @@ address varchar(50),
 indate DATETIME,
 img VARCHAR(200)
 );
-DESC member;
+DESC member;board
 
 INSERT INTO member (id, pw, NAME, phone, email, address, indate)
 VALUES
