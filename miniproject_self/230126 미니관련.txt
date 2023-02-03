@@ -1,0 +1,24 @@
+    - none 일때 : <br>
+    - reciver 일떄 : (정답 맞히기 페이지 버튼 ajax 유저리스트 가져오기)<br>
+    - contributor : 당신은 ## 의 천사입니다. 미션을 수행하여 보상을 받으세요(Mission 같이)<br>
+    
+    - 코멘트 필요(코멘트 폼)
+    - 코멘트 리스트(페이지))
+
+5 & 8
+sessionScope.info --> 로그인세션매니저.java에서 session.setAttribute
+
+    @GetMapping("/match-detail")
+    public ModelAndView matchDetail(HttpSession session) {
+    		ModelAndView mv = new ModelAndView();
+    		User.InfoDto info = (User.InfoDto) session.getAttribute("info");
+    	 	 
+    		List<Match> dto = matchService.getMatchListActive();
+    		String match1 = dto.get(0).getId().toString();
+    		String match2 = dto.get(1).getId().toString();
+    		Optional<ExtendedDto> userMatch =
+    				userMatchService.getUserMatchExtendedByUserIdAndMatchId(info.getId(), Long.parseLong(match1));
+    		mv.addObject(match1, userMatch);
+    		mv.setViewName("match-detail");
+        return mv;
+    }
