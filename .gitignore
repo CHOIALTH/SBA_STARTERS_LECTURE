@@ -139,4 +139,10 @@ $RECYCLE.BIN/
 *.iml
 *.idea
 
+#for me
+src/main/java/dbsecure/JasyptDB.java
+src/main/java/dbsecure/JasyptConfig_backup.java
+src/main/resources/application_backup.properties
+src/main/java/dbsecure/DBSecureTest.java
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,react,java
