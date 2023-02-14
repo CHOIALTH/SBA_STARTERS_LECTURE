@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type=button value="위치추적시작" id="start">
+<input type=button value="위치추적종료" id="stop">
+<div id="result"></div>
+<script>
+
+document.querySelector("#start").onclick =
+	function(){
+//위치추적시작버튼 클릭하면 위치정보 알아보기
+	watchid = navigator.geolocation.watchPosition(success, fail);
+	document.querySelector("#result").innerHTML = 
+		"<H3>위치 추적을 시작합니다</H3>";
+}
+
+document.querySelector("#stop").onclick =
+	function(){
+//위치추적종료버튼 클릭하면 위치정보 중단
+		navigator.geolocation.clearWatch(watchid);
+		document.querySelector("#result").innerHTML = 
+			"<H3>위치 추적을 종료합니다</H3>";
+		
+}
+
+function success(me){
+	var lat = me.coords.latitude;
+	var lon = me.coords.longitude;
+	document.querySelector("#result").innerHTML = "나의 위도 = " + lat 
+	+ " , 나의 경도 = " + lon;
+	window.open("http://maps.google.com?q=" + lat + "," + lon , 
+			"위치정보", 
+			"width=800, height=600, resizable=yes");
+	
+	
+}
+function fail(error){
+	document.querySelector("#result").innerHTML = "오류발생:" + error.code 
+	+ " 번 : "+ error.message;
+}
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 녹음 버튼-클릭하면 녹음기 실행
+정지 버튼-녹음 중단
+ -->
+<button id="record">녹음</button>
+<button id="stop">정지</button>
+<div id="sound"></div> 
+<script>
+ var record = document.getElementById("record");//녹음버튼
+ var stop = document.getElementById("stop");//정지버튼
+ var sound = document.getElementById("sound");//오디오태그출력예정
+ 
+ if(navigator.mediaDevices){//녹음기 카메라 지원 브라우저니
+	 console.log("지원가능");
+	 var constraints = {audio:true};//녹음기
+ }
+ 
+ var chunks=[] //녹음내용임시저장예정
+ navigator.mediaDevices.getUserMedia(constraints)
+ .then(function(stream){
+	 var mediaRecorder = new MediaRecorder(stream);
+	 record.onclick = function(){
+		 mediaRecorder.start();
+		 record.style.color = "blue";
+		 record.style.background = "red";//녹음버튼클릭하면 녹음진행중이고 버튼 파랑색글씨빨간색배경
+	 }//
+	 stop.onclick = function(){
+		 mediaRecorder.stop();
+		 record.style.color = "";
+		 record.style.background = "";		 
+	 }//
+
+ //녹음시작상태이면 chunks 에 녹음데이터를 저장하라
+ mediaRecorder.ondataavailable = function(e){
+	 chunks.push(e.data);
+ }//ondataavailable end
+ 
+ //녹음정지상태이면 실행하라
+  mediaRecorder.onstop = function(e){
+	 //audio 태그 추가
+	 var audio = document.createElement('audio');
+	 //<audio></audio>
+	 audio.setAttribute("controls", '');
+	 audio.controls = true;
+	 //<audio controls="controls"></audio>
+	 sound.appendChild(audio);
+	 //<div id="sound">  <audio controls="controls"></audio> </div>
+	
+	 //녹음 데이터 가져와라+ 오디오태그재생 세팅
+	 var blob = new Blob(chunks , {"type":"audio/mp3"});
+	 var mp3url = URL.createObjectURL(blob);
+	 audio.src = mp3url;
+	 
+	 //다음 녹음 위해 chunks 초기화
+	 chunks = [];
+	 
+	 // a 태그 생성하라
+	 var a = document.createElement('a');
+	 sound.appendChild(a);
+	 a.href = mp3url;
+	 a.innerHTML = "파일로저장";
+	 a.download = "mictest.mp3";
+	 
+ }//onstop end
+ })//then end
+ .catch(function(err){console.log("오류발생 " + err);})//catch end
+ 
+</script>
+
+<!-- blob형태 녹음 내용 저장 -- 파일명 저장 *.mp3  --> 
+</body>
+</html>

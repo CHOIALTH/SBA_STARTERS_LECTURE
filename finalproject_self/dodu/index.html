@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Index Page</title>
+    <style>
+      .dropdown-menu {
+        display: none;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!--header-->
+    <header class="bg-white p-6">
+      <nav class="flex items-center justify-between p-4 bg-gray-800 text-white">
+        <div class="flex items-center">
+          <a href="#" class="font-bold text-xl">D O D U</a>
+        </div>
+        <div class="flex items-center dropdown relative">
+          <button
+            class="text-sm font-medium focus:outline-none dropdown-toggle"
+          >
+            Dropdown
+            <svg
+              class="h-4 w-4 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9. 293, 12.95L7.71, 14.586L10.124, 17H2V7H10.124L7.71, 9.414L9.293, 11.05L15.884, 4.464L17.464, 5.95L9.293, 12.95Z"
+              />
+            </svg>
+          </button>
+          <div
+            class="z-50 absolute bg-white rounded shadow-lg mt-2 py-2 dropdown-menu"
+          >
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-300"
+              >Option 1</a
+            >
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-300"
+              >Option 2</a
+            >
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-300"
+              >Option 3</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="h-56 grid grid-cols-3 gap-4 content-center">
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700 content-center"
+      >
+        진학
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        워홀
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        장학금
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        진학
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        동아리
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        연애
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        진로
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        친구관계
+      </button>
+      <button
+        class="py-2 px-10 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+      >
+        기타
+      </button>
+    </div>
+    <div class="d-flex justify-content-start">
+      <div class="p-2"><b>예지</b>님을 위한 추천 멘토입니다</div>
+    </div>
+
+    <!-- Carousel Container -->
+    <div
+      class="flex items-center justify-center w-full h-1/2 py-5 sm:py-8 px-4"
+    >
+      <div class="w-full relative flex items-center justify-center">
+        <button
+          aria-label="slide backward"
+          class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer"
+          id="prev"
+        >
+          <svg
+            class="dark:text-gray-900"
+            width="8"
+            height="14"
+            viewBox="0 0 8 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 1L1 7L7 13"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+          <div
+            id="slider"
+            class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
+          >
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/tube.jpg"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  진학
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <span
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                    >시무룩한 튜브</span
+                  ><br />
+                </div>
+              </div>
+              <button
+                class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-pink-500 hover:bg-pink-700"
+              >
+                자세히보기
+              </button>
+            </div>
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/prodo.png"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  Catalog 1
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <h3
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                  >
+                    Minimal Interior
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/muji.jpg"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  Catalog 1
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <h3
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                  >
+                    Minimal Interior
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/apeach.png"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  Catalog 1
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <h3
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                  >
+                    Minimal Interior
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/prodo2.png"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  Catalog 1
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <h3
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                  >
+                    Minimal Interior
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/tube2.jpg"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  Catalog 1
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <h3
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                  >
+                    Minimal Interior
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/chunsik.jpg"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  Catalog 1
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <h3
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                  >
+                    Minimal Interior
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-shrink-0 relative w-full h-100 sm:w-auto">
+              <img
+                src="images/chunsik.jpg"
+                alt="black chair and white table"
+                class="object-cover object-center w-full"
+              />
+              <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                <h2
+                  class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900"
+                >
+                  Catalog 1
+                </h2>
+                <div class="flex h-full items-end pb-6">
+                  <h3
+                    class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900"
+                  >
+                    Minimal Interior
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          aria-label="slide forward"
+          class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+          id="next"
+        >
+          <svg
+            class="dark:text-gray-900"
+            width="8"
+            height="14"
+            viewBox="0 0 8 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1L7 7L1 13"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script>
+      document
+        .querySelector(".dropdown-toggle")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          document.querySelector(".dropdown-menu").classList.toggle("hidden");
+        });
+    </script>
+  </body>
+</html>

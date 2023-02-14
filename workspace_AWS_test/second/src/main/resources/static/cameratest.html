@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- zoom 카메라 끄고 테스트할 것!!! -->
+<canvas id="camera-output"></canvas>
+<video id="camera-view" autoplay playsinline></video>
+<button id="camera-btn">사진촬영</button>
+<a id="camera-save"></a>
+
+<script>
+var cameraOutput = document.getElementById("camera-output");
+var cameraView = document.getElementById("camera-view");
+var cameraBtn = document.getElementById("camera-btn");
+var cameraSave = document.getElementById("camera-save");
+
+var constraints = {video : {facingMode:"user"} , audio:false};
+//카메라 내용을 video 태그 출력
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(stream){cameraView.srcObject = stream; })
+.catch(function(err){console.log("카메라 문제 감지 ", err);})
+
+//카메라 찍어라. 
+cameraBtn.onclick = function(){
+	//캔버스에 촬영 이미지 출력  
+	cameraOutput.width = cameraView.videoWidth;//캔버스 가로크기를 비디오영상 가로크기만큼 
+	cameraOutput.height = cameraView.videoHeight;//캔버스 세로크기를 비디오영상 세로크기만큼
+	var context = cameraOutput.getContext("2d");
+	context.drawImage(cameraView , 0, 0);
+	
+	//파일 저장
+	cameraOutput.toBlob(function(blob){
+		var imageURL = URL.createObjectURL(blob);
+		cameraSave.href = imageURL;
+		cameraSave.innerHTML="png파일로저장";
+		cameraSave.download = "my.png";//클라이언트컴퓨터(스프링부트서버로 업로드 전송)
+		//<a href="캔버스촬영이미지이진수형태변경값"> png파일로저장</a>
+		
+	});//toBlob
+}//cameraBtn.onclick
+
+
+
+</script>
+</body>
+</html>
